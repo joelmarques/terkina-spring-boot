@@ -1,4 +1,4 @@
-package br.com.terkina.module.instituicao;
+package br.com.terkina.module.localizacao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +12,9 @@ import lombok.ToString;
 @Entity
 @ToString(of="nome")
 @NoArgsConstructor
-public class Instituicao extends EntityBase<Long> {
+public class Localizacao extends EntityBase<Long> {
 
-	private static final long serialVersionUID = 2175678654852054488L;
+	private static final long serialVersionUID = -1907761100298890544L;
 
 	@Getter @Setter
 	@Column(name="NOME", length = 100, nullable = false)
@@ -23,4 +23,9 @@ public class Instituicao extends EntityBase<Long> {
 	@Getter @Setter
 	@Column(name="SIGLA", length = 20, nullable = false)
 	private String sigla;
+
+	@Getter @Setter
+	@Column(name="DESCRICAO", length = 500)
+	private String descricao;
+
 }

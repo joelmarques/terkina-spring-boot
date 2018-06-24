@@ -13,7 +13,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Entity
-@ToString(callSuper=true)
+@ToString(of="nome")
 @NoArgsConstructor
 public class Curso extends EntityBase<Long> {
 	

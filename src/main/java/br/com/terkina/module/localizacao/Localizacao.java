@@ -12,19 +12,17 @@ import lombok.ToString;
 @Entity
 @ToString(of="nome")
 @NoArgsConstructor
+@Getter @Setter
 public class Localizacao extends EntityBase<Long> {
 
 	private static final long serialVersionUID = -1907761100298890544L;
 
-	@Getter @Setter
 	@Column(name="NOME", length = 100, nullable = false)
 	private String nome;
 
-	@Getter @Setter
 	@Column(name="SIGLA", length = 20, nullable = false)
 	private String sigla;
 
-	@Getter @Setter
 	@Column(name="DESCRICAO", length = 500)
 	private String descricao;
 

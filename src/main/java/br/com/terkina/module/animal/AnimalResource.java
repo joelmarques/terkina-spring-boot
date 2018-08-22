@@ -44,7 +44,7 @@ public class AnimalResource {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping
+	@GetMapping("all")
 	public Collection<AnimalVO> findAll() {		
 		return this.animalVOConverter.convert(this.animalDao.findByTenancy(this.userService.getCurrentTenancy()));
 	}

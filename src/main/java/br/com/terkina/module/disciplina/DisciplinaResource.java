@@ -3,7 +3,7 @@ package br.com.terkina.module.disciplina;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.terkina.base.rest.SimpleRestBaseController;
+import br.com.terkina.base.controller.SimpleRestBaseController;
 
 @RestController
 @RequestMapping("/resources/disciplinas")

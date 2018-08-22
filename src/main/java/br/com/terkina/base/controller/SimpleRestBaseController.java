@@ -1,4 +1,4 @@
-package br.com.terkina.base.rest;
+package br.com.terkina.base.controller;
 
 import java.util.List;
 import java.util.Optional;

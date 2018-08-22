@@ -12,6 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
@@ -29,6 +31,18 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
+@NamedNativeQueries({
+	@NamedNativeQuery(name="Animal.findAllByTenancy",
+					  query="select a.id as id, a.nome as descricao"
+					  		+ " from animal a"
+					  		+ " where a.tenancy = ?1"),
+	
+	@NamedNativeQuery(name="Animal.findAllByProject",
+					  query="select a.id as id, a.nome as descricao"
+					  		+ " from animal a"
+					  		+ " where a.id in"
+					  		+ " (select pa.id_animal from projeto_animal pa where pa.id_projeto = ?1)")
+})
 public class Animal extends EntityBase<Long> {
 
 	private static final long serialVersionUID = 9139783455041858497L;

@@ -1,12 +1,13 @@
 package br.com.terkina.module.animal;
 
 import java.util.Collection;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
+import br.com.terkina.base.model.Item;
 import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.base.utils.DateUtils;
 import br.com.terkina.module.arquivo.Arquivo;
@@ -48,15 +49,23 @@ public class AnimalDTOConverter implements Converter<Animal, AnimalDTO> {
 		return source == null ? null : new ItemVO(source.getId(), source.getNome());
 	}
 	
-	private ItemVO converterOrigem(Localizacao source) {
+	private ItemVO converterOrigem(final Localizacao source) {
 		return source == null ? null : new ItemVO(source.getId(), source.getNome());
 	}
 	
-	private ItemVO converterDestino(Localizacao source) {
+	private ItemVO converterDestino(final Localizacao source) {
 		return source == null ? null : new ItemVO(source.getId(), source.getNome());
 	}
 	
-	private Collection<ArquivoDTO> converterArquivos(final Set<Arquivo> arquivos) {
+	private Collection<ArquivoDTO> converterArquivos(final Collection<Arquivo> arquivos) {
 		return this.arquivoDTOConverter.convert(arquivos);
+	}
+	
+	public Collection<Item> converterAnimais(final Collection<Animal> itens) {
+		return itens.stream().map(this::converter).collect(Collectors.toList());
+	}
+	
+	private Item converter(Animal item) {
+		return new ItemVO(item.getId(), item.getNome());
 	}
 }

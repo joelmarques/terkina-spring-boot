@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Reverse;
-import br.com.terkina.base.model.ItemVO;
+import br.com.terkina.base.model.Item;
 import br.com.terkina.base.utils.DateUtils;
 import br.com.terkina.module.arquivo.Arquivo;
 import br.com.terkina.module.arquivo.ArquivoDTO;
@@ -57,15 +57,15 @@ public class AnimalDTOReverse implements Reverse<AnimalDTO, Animal> {
 		return id == null ? new Animal() : this.animalDao.getOne(id);
 	}
 	
-	private TipoDeAnimal reverterEspecie(final ItemVO source) {
+	private TipoDeAnimal reverterEspecie(final Item source) {
 		return source == null ? null : this.tipoDeAnimalDao.getOne(source.getId());
 	}
 
-	private Localizacao reverterOrigem(final ItemVO source) {
+	private Localizacao reverterOrigem(final Item source) {
 		return source == null ? null : this.localizacaoDao.getOne(source.getId());
 	}
 
-	private Localizacao reverterDestino(final ItemVO source) {
+	private Localizacao reverterDestino(final Item source) {
 		return source == null ? null : this.localizacaoDao.getOne(source.getId());
 	}
 	

@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Reverse;
-import br.com.terkina.base.model.ItemVO;
+import br.com.terkina.base.model.Item;
 import br.com.terkina.base.utils.PasswordUtils;
 import br.com.terkina.module.curso.Curso;
 import br.com.terkina.module.curso.CursoDao;
@@ -43,9 +43,9 @@ public class IntegranteDTOReverse implements Reverse<IntegranteDTO, Integrante> 
 		target.setResumo(source.getResumo());
 		target.setUrlFoto(source.getUrlFoto());
 		target.setEnable(source.getEnable());
-		target.setRoles(new HashSet<Profile>(this.rolesDao.findAllById(ItemVO.convert(source.getRoles()))));
-		target.setCursos(new HashSet<Curso>(this.cursoDao.findAllById(ItemVO.convert(source.getCursos()))));
-		target.setOrientadores(new HashSet<Integrante>(this.integranteDao.findAllById(ItemVO.convert(source.getOrientadores()))));
+		target.setRoles(new HashSet<Profile>(this.rolesDao.findAllById(Item.findIds(source.getRoles()))));
+		target.setCursos(new HashSet<Curso>(this.cursoDao.findAllById(Item.findIds(source.getCursos()))));
+		target.setOrientadores(new HashSet<Integrante>(this.integranteDao.findAllById(Item.findIds(source.getOrientadores()))));
 		this.definirSenhaDeAcesso(source, target);
 		return target;
 	}

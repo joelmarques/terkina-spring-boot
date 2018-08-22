@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Reverse;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.animal.AnimalDao;
 import br.com.terkina.module.arquivo.Arquivo;
@@ -70,11 +69,11 @@ public class SessaoExperimentoDTOReverse implements Reverse<SessaoExperimentoDTO
 	}
 
 	private Set<Integrante> reverterPesquisadores(final Collection<Item> pesquisadores) {
-		return new HashSet<Integrante>(this.integranteDao.findAllById(ItemVO.convert(pesquisadores)));
+		return new HashSet<Integrante>(this.integranteDao.findAllById(Item.findIds(pesquisadores)));
 	}
 	
 	private Set<Animal> reverterAnimais(final Collection<Item> animais) {
-		return new HashSet<Animal>(this.animalDao.findAllById(ItemVO.convert(animais)));
+		return new HashSet<Animal>(this.animalDao.findAllById(Item.findIds(animais)));
 	}
 	
 	private Set<Arquivo> reverterArquivos(final Collection<ArquivoDTO> arquivos) {

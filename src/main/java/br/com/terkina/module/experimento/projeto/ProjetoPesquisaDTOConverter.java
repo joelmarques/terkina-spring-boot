@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.animal.AnimalDTOConverter;
 import br.com.terkina.module.integrante.Integrante;
@@ -41,7 +40,7 @@ public class ProjetoPesquisaDTOConverter implements Converter<ProjetoPesquisa, P
 	}
 	
 	private Item converterTipoDePesquisa(final TipoDePesquisa item) {
-		return item == null ? null : new ItemVO(item.getId(), item.getNome());
+		return item == null ? null : Item.create(item.getId(), item.getNome());
 	}
 
 	private Collection<Item> converterIntegrantes(final Collection<Integrante> itens) {

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.module.curso.Curso;
 import br.com.terkina.module.user.Profile;
 
@@ -44,7 +43,7 @@ public class IntegranteDTOConverter implements Converter<Integrante, IntegranteD
 	}
 	
 	private Item converter(Profile item) {
-		return new ItemVO(item.getId(), item.getName().getDescricao());
+		return Item.create(item.getId(), item.getName().getDescricao());
 	}
 	
 	public List<Item> converterIntegrantes(final Collection<Integrante> itens) {
@@ -52,7 +51,7 @@ public class IntegranteDTOConverter implements Converter<Integrante, IntegranteD
 	}
 	
 	private Item converter(Integrante item) {
-		return new ItemVO(item.getId(), item.getNome());
+		return Item.create(item.getId(), item.getNome());
 	}
 	
 	public List<Item> converterCursos(final Collection<Curso> itens) {
@@ -60,7 +59,7 @@ public class IntegranteDTOConverter implements Converter<Integrante, IntegranteD
 	}
 	
 	private Item converter(Curso item) {
-		return new ItemVO(item.getId(), item.nomeDoCursoMaisSiglaDaInstituicao());
+		return Item.create(item.getId(), item.nomeDoCursoMaisSiglaDaInstituicao());
 	}
 	
 }

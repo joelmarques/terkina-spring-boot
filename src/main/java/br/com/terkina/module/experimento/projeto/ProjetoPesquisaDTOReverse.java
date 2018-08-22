@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Reverse;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.animal.AnimalDao;
 import br.com.terkina.module.integrante.Integrante;
@@ -39,9 +38,9 @@ public class ProjetoPesquisaDTOReverse implements Reverse<ProjetoPesquisaDTO, Pr
 		target.setDataDeInicio(source.getDataDeInicio());
 		target.setDataDeConclusao(source.getDataDeConclusao());
 		target.setTipoPesquisa(this.reverterTipoPesquisa(source.getTipoPesquisa()));
-		target.setOrientadores(new HashSet<Integrante>(this.integranteDao.findAllById(ItemVO.convert(source.getOrientadores()))));
-		target.setPesquisadores(new HashSet<Integrante>(this.integranteDao.findAllById(ItemVO.convert(source.getPesquisadores()))));
-		target.setAnimais(new HashSet<Animal>(this.animalDao.findAllById(ItemVO.convert(source.getAnimais()))));
+		target.setOrientadores(new HashSet<Integrante>(this.integranteDao.findAllById(Item.findIds(source.getOrientadores()))));
+		target.setPesquisadores(new HashSet<Integrante>(this.integranteDao.findAllById(Item.findIds(source.getPesquisadores()))));
+		target.setAnimais(new HashSet<Animal>(this.animalDao.findAllById(Item.findIds(source.getAnimais()))));
 		return target;
 	}
 	

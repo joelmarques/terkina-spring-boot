@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.base.utils.DateUtils;
 import br.com.terkina.module.arquivo.Arquivo;
 import br.com.terkina.module.arquivo.ArquivoDTO;
@@ -45,16 +44,16 @@ public class AnimalDTOConverter implements Converter<Animal, AnimalDTO> {
 		return target;
 	}
 	
-	private ItemVO converterEspecie(final TipoDeAnimal source) {
-		return source == null ? null : new ItemVO(source.getId(), source.getNome());
+	private Item converterEspecie(final TipoDeAnimal source) {
+		return source == null ? null : Item.create(source.getId(), source.getNome());
 	}
 	
-	private ItemVO converterOrigem(final Localizacao source) {
-		return source == null ? null : new ItemVO(source.getId(), source.getNome());
+	private Item converterOrigem(final Localizacao source) {
+		return source == null ? null : Item.create(source.getId(), source.getNome());
 	}
 	
-	private ItemVO converterDestino(final Localizacao source) {
-		return source == null ? null : new ItemVO(source.getId(), source.getNome());
+	private Item converterDestino(final Localizacao source) {
+		return source == null ? null : Item.create(source.getId(), source.getNome());
 	}
 	
 	private Collection<ArquivoDTO> converterArquivos(final Collection<Arquivo> arquivos) {
@@ -66,6 +65,6 @@ public class AnimalDTOConverter implements Converter<Animal, AnimalDTO> {
 	}
 	
 	private Item converter(Animal item) {
-		return new ItemVO(item.getId(), item.getNome());
+		return Item.create(item.getId(), item.getNome());
 	}
 }

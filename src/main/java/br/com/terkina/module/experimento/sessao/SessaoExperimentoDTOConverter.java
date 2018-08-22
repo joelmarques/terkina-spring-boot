@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.model.ItemVO;
 import br.com.terkina.module.animal.AnimalDTOConverter;
 import br.com.terkina.module.arquivo.ArquivoDTOConverter;
 import br.com.terkina.module.disciplina.Disciplina;
@@ -39,6 +38,6 @@ public class SessaoExperimentoDTOConverter implements Converter<SessaoExperiment
 	}
 
 	private Item converterDisciplina(final Disciplina disciplina) {
-		return disciplina == null ? null : new ItemVO(disciplina.getId(), disciplina.getNome());
+		return disciplina == null ? null : Item.create(disciplina.getId(), disciplina.getNome());
 	}
 }

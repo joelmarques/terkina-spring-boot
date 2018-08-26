@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
@@ -20,6 +22,17 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
+@NamedNativeQueries({	
+	@NamedNativeQuery(name="Empresa.findOneByIdentifier",
+					  query="select e.descricao as resumo,"
+					  		+ " e.email as email,"
+					  		+ " e.objetivo_um as objetivoUm,"
+					  		+ " e.objetivo_dois as objetivoDois,"
+					  		+ " e.objetivo_tres as objetivoTres,"
+					  		+ " e.url_video as urlVideo,"
+					  		+ " e.tenancy as tenancy"
+					  		+ " from empresa e where e.identificador = ?1")
+})
 public class Empresa extends EntityBase<Long> {
 
 	private static final long serialVersionUID = -8799122525545330960L;

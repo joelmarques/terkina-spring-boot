@@ -36,6 +36,7 @@ public interface ISite {
 		String getUrlFoto();
 		String getDataDeNascimento();
 		String getIdade();
+		boolean isAniversariante();
 		String getProveniencia();
 	}
 

@@ -6,7 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import br.com.terkina.base.enums.SituacaoEnum;
 import br.com.terkina.base.model.Item;
+import br.com.terkina.module.publico.site.ISite.IAnimal;
 
 @Repository
 public interface AnimalDao extends JpaRepository<Animal, Long> {
@@ -18,4 +20,11 @@ public interface AnimalDao extends JpaRepository<Animal, Long> {
 	
 	@Query(name="Animal.findAllByProject", nativeQuery=true)
 	List<Item> buscarAnimaisPorProjeto(Long idProjeto);
+	
+	@Query(name="Animal.findAllByTenancyAndEnable", nativeQuery=true)
+	List<IAnimal> findAllByTenancyAndEnable(Long tenancy, String situacao);
+	
+	default public List<IAnimal> buscarAnimaisHabilitadosDaEmpresa(Long tenancy) {
+		return this.findAllByTenancyAndEnable(tenancy, SituacaoEnum.HABILITADO.name());
+	}
 }

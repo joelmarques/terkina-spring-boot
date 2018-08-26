@@ -44,6 +44,11 @@ public class SessaoExperimentoResource {
 	@Autowired
 	private UserService userService;
 	
+	@GetMapping("sessoes")
+	public Collection<SessaoExperimentoVO> getSessoesPorProjeto(@RequestParam("idProjeto") Long idProjeto) {
+		return this.sessaoExperimentoDao.buscarSessoesPorProjeto(idProjeto);
+	}
+	
 	@GetMapping("/{id}")
 	public SessaoExperimentoDTO findByID(@PathVariable("id") Long id) {		
 		return this.converter.convert(this.sessaoExperimentoDao.getOne(id));
@@ -57,11 +62,6 @@ public class SessaoExperimentoResource {
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
 		this.sessaoExperimentoDao.deleteById(id);
-	}
-	
-	@GetMapping("sessoes")
-	public Collection<SessaoExperimentoVO> getSessoesPorProjeto(@RequestParam("idProjeto") Long idProjeto) {
-		return this.sessaoExperimentoDao.buscarSessoesPorProjeto(idProjeto);
 	}
 	
 	@GetMapping("disciplinas")

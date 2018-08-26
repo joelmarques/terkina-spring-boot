@@ -5,10 +5,10 @@ import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.terkina.base.model.Item;
@@ -48,7 +48,7 @@ public class ProjetoPesquisaResource {
 	}
 	
 	@GetMapping("/{id}")
-	public ProjetoPesquisaDTO findByID(@RequestParam("id") Long id) {		
+	public ProjetoPesquisaDTO findByID(@PathVariable("id") Long id) {		
 		return this.converter.convert(this.projetoPesquisaDao.getOne(id));
 	}
 
@@ -58,7 +58,7 @@ public class ProjetoPesquisaResource {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@RequestParam("id") Long id) {
+	public void delete(@PathVariable("id") Long id) {
 		this.projetoPesquisaDao.deleteById(id);
 	}
 	

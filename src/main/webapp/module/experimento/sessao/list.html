@@ -1,0 +1,28 @@
+ <div class="container">
+  <h2>Sessões de Experimento</h2>
+  <h6>Projeto > {{tituloProjeto}}</h6>
+  <p>Listagem</p>
+  
+  <a id="voltar" name="voltar" class="btn btn-warning" href="#/projeto">Voltar</a>
+                                                                           
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+      	<th>Disciplina</th>
+        <th>Data</th>
+        <th><a href="" ng-click="novo()"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="sessao in sessoes">
+      	<td>{{sessao.disciplina}}</td>
+        <td>{{sessao.dataSessao | date:'dd/MM/yyyy HH:mm'}}</td>
+        <td>
+          <a href="" ng-click="editar(sessao.id)"><i class="icon-pencil"></i>Editar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

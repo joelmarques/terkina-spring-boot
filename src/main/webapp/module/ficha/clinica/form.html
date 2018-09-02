@@ -1,0 +1,54 @@
+
+<ol class="breadcrumb">
+  <li><a href="#animais">Animais</a></li>
+  <li>Ficha Clínica</li>
+  <li class="active">{{nomeAnimal}}</li>
+</ol>
+	
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	
+	<div id="tabsFichasClinicas">
+	  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="" data-target="#tabBiometria" aria-controls="tabBiometria" role="tab" data-toggle="tab">Dados Gerais</a></li>
+	    <li role="presentation"><a href="" data-target="#tabManejo" aria-controls="tabManejo" role="tab" data-toggle="tab">Manejo</a></li>
+	    <li role="presentation"><a href="" data-target="#tabDenticao" aria-controls="tabDenticao" role="tab" data-toggle="tab">Dentição</a></li>
+	    <li role="presentation"><a href="" data-target="#tabDadosSanitarios" aria-controls="tabDadosSanitarios" role="tab" data-toggle="tab">Dados Sanitários</a></li>
+	    <li role="presentation"><a href="" data-target="#tabHistoricoClinico" aria-controls="tabHistoricoClinico" role="tab" data-toggle="tab">Histórico Clínico</a></li>
+	    <li role="presentation"><a href="" data-target="#tabReproducao" aria-controls="tabReproducao" role="tab" data-toggle="tab">Reprodução</a></li>
+	  </ul>
+	
+	  <!-- Tab panes -->
+	  <div class="tab-content">
+	    <div role="tabpanel" class="tab-pane active" id="tabBiometria">
+	    	<div ng-include='"module/ficha/clinica/biometria/include-biometria.html"'></div>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="tabManejo">
+	    	<div ng-include='"module/ficha/clinica/manejo/include-manejo.html"'></div>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="tabDenticao">
+	    	<div ng-include='"module/ficha/clinica/denticao/include-denticao.html"'></div>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="tabDadosSanitarios">
+	    	<div ng-include='"module/ficha/clinica/dado-sanitario/include-dado-sanitario.html"'></div>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="tabHistoricoClinico">
+	    	<div ng-include='"module/ficha/clinica/historico-clinico/include-historico-clinico.html"'></div>
+	    </div>
+	    <div role="tabpanel" class="tab-pane" id="tabReproducao">
+	    	<div ng-include='"module/ficha/clinica/reproducao/include-reproducao.html"'></div>
+	    </div>
+	  </div>
+
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">  	
+	  	<button id="voltar" name="voltar" class="btn btn-warning" ng-click="voltar()">Voltar</button>
+	  </div>
+	</div>
+	
+	</fieldset>
+</form>

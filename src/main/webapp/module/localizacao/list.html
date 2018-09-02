@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Locais de Remanejamento</h2>
+  <p>Listagem</p>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th><a href="#/novaLocalizacao"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="local in locais">
+      	<td>{{local.nome}}</td>
+        <td>{{local.sigla}}</td>
+        <td>
+          <a ng-href="#/localizacao/edit/{{local.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

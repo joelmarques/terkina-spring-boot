@@ -1,0 +1,131 @@
+<form name="myForm" class="form-horizontal">
+	<fieldset><legend>Trabalho Acadêmico</legend>
+	<h6>Projeto > {{tituloProjeto}}</h6>
+	<p>Formulário</p>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="tipoTrabalho">Tipo trabalho</label>
+	  <div class="col-md-5">	    
+	    <select id="tipoTrabalho" name="tipoTrabalho" ng-model="trabalhoAcademico.tipoTrabalho" ng-options="t.descricao for t in tiposTrabalho track by t.id" ng-required="true"></select>
+	    <span ng-class="error" ng-show="myForm.tipoTrabalho.$error.required">Obrigatório</span>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 1">
+	  <label class="col-md-4 control-label" for="nomePeriodico">Nome do periódico</label>  
+	  <div class="col-md-5">
+		  <input id="nomePeriodico" name="nomePeriodico" type="text" class="form-control input-md" ng-model="trabalhoAcademico.nomePeriodico">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 1">
+	  <label class="col-md-4 control-label" for="volume">Volume</label>  
+	  <div class="col-md-5">
+		  <input id="volume" name="volume" type="text" class="form-control input-md" ng-model="trabalhoAcademico.volume">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 1">
+	  <label class="col-md-4 control-label" for="edicao">Edição</label>  
+	  <div class="col-md-5">
+		  <input id="edicao" name="edicao" type="text" class="form-control input-md" ng-model="trabalhoAcademico.edicao">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 1">
+	  <label class="col-md-4 control-label" for="paginaInicial">Página inicial</label>  
+	  <div class="col-md-5">
+		  <input id="paginaInicial" name="paginaInicial" type="text" class="form-control input-md" ng-model="trabalhoAcademico.paginaInicial">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 2 || trabalhoAcademico.tipoTrabalho.id == 3 || trabalhoAcademico.tipoTrabalho.id == 4">
+	  <label class="col-md-4 control-label" for="natureza">Natureza</label>
+	  <div class="col-md-5">	    
+	    <select id="natureza" name="natureza" ng-model="trabalhoAcademico.natureza" ng-options="t for t in trabalhoAcademico.tipoTrabalho.naturezas track by t"></select>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="titulo">Título</label>  
+	  <div class="col-md-5">
+		  <input id="titulo" name="titulo" type="text" class="form-control input-md" ng-model="trabalhoAcademico.titulo" ng-required="true">
+		  <span ng-class="error" ng-show="myForm.titulo.$error.required">Obrigatório</span>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="palavrasChave">Palavras-chave</label>  
+	  <div class="col-md-5">
+		  <input id="palavrasChave" name="palavrasChave" type="text" class="form-control input-md" ng-model="trabalhoAcademico.palavrasChave">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 2 || trabalhoAcademico.tipoTrabalho.id == 3 || trabalhoAcademico.tipoTrabalho.id == 4">
+	  <label class="col-md-4 control-label" for="ano">Ano</label>  
+	  <div class="col-md-5">
+		  <input id="ano" name="ano" type="text" class="form-control input-md" ng-model="trabalhoAcademico.ano">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 2 || trabalhoAcademico.tipoTrabalho.id == 3">
+	  <label class="col-md-4 control-label" for="evento">Evento</label>
+	  <div class="col-md-5">	    
+	    <input id="evento" name="evento" type="text" class="form-control input-md" ng-model="trabalhoAcademico.evento">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 2 || trabalhoAcademico.tipoTrabalho.id == 3">
+	  <label class="col-md-4 control-label" for="naturezaEvento">Natureza do evento</label>
+	  <div class="col-md-5">	    
+	    <select id="naturezaEvento" name="naturezaEvento" ng-model="trabalhoAcademico.naturezaEvento" ng-options="t for t in trabalhoAcademico.tipoTrabalho.naturezasEvento track by t"></select>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 2 || trabalhoAcademico.tipoTrabalho.id == 3">
+	  <label class="col-md-4 control-label" for="cidadeEvento">Cidade evento</label>
+	  <div class="col-md-5">	    
+	    <input id="cidadeEvento" name="cidadeEvento" type="text" class="form-control input-md" ng-model="trabalhoAcademico.cidadeEvento">
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-show="trabalhoAcademico.tipoTrabalho.id == 4">
+	  <label class="col-md-4 control-label" for="orientador">Orientador</label>
+	  <div class="col-md-5">	    
+	    <input id="orientador" name="orientador" type="text" class="form-control input-md" ng-model="trabalhoAcademico.orientador">
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="autores">Autores</label>
+	  <div class="col-md-5">	    
+	    <input id="autores" name="autores" type="text" class="form-control input-md" ng-model="trabalhoAcademico.autores">
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="urlArquivo">URL do Arquivo</label>  
+	  <div class="col-md-5">
+		  <input id="urlArquivo" name="urlArquivo" type="text" class="form-control input-md" ng-model="trabalhoAcademico.urlArquivo" required placeholder="Obrigatório">  
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="observacoes">Observações</label>  
+	  <div class="col-md-5">
+		  <textarea id="observacoes" name="observacoes" class="form-control" ng-model="trabalhoAcademico.observacoes" rows="5"></textarea>  
+	  </div>
+	</div>
+	
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">
+	  	<button id="cancelar" name="cancelar" class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	    <button id="excluir" name="excluir" class="btn btn-danger" ng-click="excluir(trabalhoAcademico.id)">Excluir</button>
+	  </div>
+	</div>
+
+	</fieldset>
+</form>

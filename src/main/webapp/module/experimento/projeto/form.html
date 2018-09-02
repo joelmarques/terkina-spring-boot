@@ -1,0 +1,187 @@
+<ol class="breadcrumb">
+  <li><a href="#projeto">Projetos</a></li>
+  <li class="active">{{projeto.titulo}}</li>
+  <li>{{etapa}}</li>
+</ol>
+
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	
+	<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Dados Gerais</h3> </div>	
+	<div class="panel-body">
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.titulo.$invalid && !myForm.titulo.$pristine}">
+	  <label class="col-md-4 control-label" for="titulo">Título</label>  
+	  <div class="col-md-5">
+		  <input id="titulo" name="titulo" type="text" class="form-control input-md" ng-model="projeto.titulo" 
+		  		 required placeholder="Obrigatório" ng-maxlength="300">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.titulo.$valid && myForm.titulo.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="resumo">Resumo</label>
+	  <div class="col-md-5">                     
+	    <textarea class="form-control" id="resumo" name="resumo" ng-model="projeto.resumo" rows="5" required placeholder="Obrigatório"></textarea>
+	    <span ng-class="{'glyphicon glyphicon-ok' : myForm.resumo.$valid && myForm.resumo.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.dataDeInicio.$invalid && !myForm.dataDeInicio.$pristine}">
+	  <label class="col-md-4 control-label" for="dataDeInicio">Data de início(dia/mês/ano)</label>  
+	  <div class="col-md-5">
+		  <input id="dataDeInicio" name="dataDeInicio" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+		  		 ng-model="projeto.dataDeInicio"/>
+		  <span ng-class="error" ng-show="myForm.dataDeInicio.$error.date">Data inválida!</span>
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.dataDeInicio.$valid && myForm.dataDeInicio.$dirty}"></span>		  
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.dataDeConclusao.$invalid && !myForm.dataDeConclusao.$pristine}">
+	  <label class="col-md-4 control-label" for="dataDeConclusao">Data de conclusão(dia/mês/ano)</label>  
+	  <div class="col-md-5">
+		  <input id="dataDeConclusao" name="dataDeConclusao" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy"
+		  		 ng-model="projeto.dataDeConclusao"/>
+		  <span ng-class="error" ng-show="myForm.dataDeConclusao.$error.date">Data inválida!</span>
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.dataDeConclusao.$valid && myForm.dataDeConclusao.$dirty}"></span>		  
+	  </div>
+	</div>
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="tipoPesquisa">Tipo de Pesquisa</label>
+	  <div class="col-md-5">	    
+	    <select ng-model="projeto.tipoPesquisa" ng-options="t.descricao for t in tiposDePesquisa track by t.id"></select>	    
+	  </div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-4 control-label">Orientadores</label>
+		<div class="col-md-5">
+			<label ng-repeat="orientador in orientadores" class="checkbox-inline">
+			  <input type="checkbox" data-checklist-model="projeto.orientadores" data-checklist-value="orientador"> {{orientador.descricao}}
+			</label>
+		</div>
+	</div>
+	
+	</div>
+	</div>
+	
+	<!-- picklist pesquisadores usando o picklist.js-->
+<!-- 	<div class="form-group"> -->
+<!--         <label class="col-md-4 control-label">Pesquisadores</label> -->
+<!--         <div class="col-md-5"> -->
+<!--         	<picklist name="Tpesquisadores" size="20" data-picklist="" data-pick-model="projeto.pesquisadores" data-pick-options="v.nome for v in pesquisadores"></picklist> -->
+<!--         </div> -->
+<!--     </div>  -->
+	
+	<!-- picklist animais usando o picklist.js -->
+<!-- 	<div class="form-group"> -->
+<!--         <label class="col-md-4 control-label">Animais</label> -->
+<!--         <div class="col-md-5"> -->
+<!--         	<picklist name="Tanimais" size="20" data-picklist="" data-pick-model="projeto.animais" data-pick-options="v.nome for v in animais"></picklist> -->
+<!--         </div> -->
+<!--     </div>  -->
+	
+	
+	<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Pesquisadores</h3> </div>	
+	<div class="panel-body">
+	
+	<!-- picklist pesquisadores -->
+	<div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-5">
+        
+        	<div class="ng-pristine ng-valid" style="display: table;width:100%;display: table;width:100%">
+        		<div style="display: table-row;">
+				
+					<div style="display: table-cell; width: 40%;vertical-align: middle;">
+						<label class="control-label">Não Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]" size="15" style="width: 90%">
+			                <option ng-repeat="p in pesquisadores" value="{{p.id}}" ng-click="adicionarPesquisador($index, p)">{{p.descricao}}</option>
+			            </select>
+		            </div>
+		            
+			            <div style="display: table-cell; width: 10%; vertical-align: middle;" class="btn-group-vertical">
+			            	<div>
+			            		<button type="button" class="btn btn-info" data-ng-click="">
+			            			<span class="glyphicon glyphicon-refresh"></span>
+			            		</button>
+			            	</div>
+			            </div>
+		            
+		            <div style="display: table-cell; width: 40%;vertical-align: middle;">
+		            	<label class="control-label">Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select2" name="my_multi_select2[]" size="15" style="width: 90%">
+			                <option ng-repeat="p in projeto.pesquisadores" value="{{p.id}}" ng-click="removerPesquisador($index, p)">{{p.descricao}}</option>
+			            </select>
+		            </div>
+	            </div>
+            
+            </div>
+         </div>
+    </div>
+    
+    </div>
+    </div>
+	
+	<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Animais</h3> </div>	
+	<div class="panel-body" >
+	
+	<!-- picklist animais-->
+	<div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-5">
+        
+        	<div class="ng-pristine ng-valid" style="display: table;width:100%;display: table;width:100%">
+        		<div style="display: table-row;">
+				
+					<div style="display: table-cell; width: 40%;vertical-align: middle;">
+						<label class="control-label">Não Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select3" name="my_multi_select3[]" size="15" style="width: 90%">
+			                <option ng-repeat="a in animais" value="{{a.id}}" ng-click="adicionarAnimal($index, a)">{{a.descricao}}</option>
+			            </select>
+		            </div>
+		            
+		            <div style="display: table-cell; width: 10%; vertical-align: middle;" class="btn-group-vertical">
+		            	<div>
+		            		<button type="button" class="btn btn-info" data-ng-click="">
+		            			<span class="glyphicon glyphicon-refresh"></span>
+		            		</button>
+		            	</div>
+		            </div>
+		            
+		            <div style="display: table-cell; width: 40%;vertical-align: middle;">
+		            	<label class="control-label">Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select4" name="my_multi_select4[]" size="15" style="width: 90%">
+			                <option ng-repeat="a in projeto.animais" value="{{a.id}}" ng-click="removerAnimal($index, a)">{{a.descricao}}</option>
+			            </select>
+		            </div>
+	            </div>
+            
+            </div>
+         </div>
+    </div>
+    
+    </div>
+    </div>
+	
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">  	
+	  	<button id="cancelar" name="cancelar" class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	    <button id="excluir" name="excluir" class="btn btn-danger" ng-click="excluir(projeto.id)">Excluir</button>
+	  </div>
+	</div>
+	
+	</fieldset>
+</form>

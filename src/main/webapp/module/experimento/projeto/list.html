@@ -1,0 +1,30 @@
+<div class="container">
+  <h2>Projetos de Pesquisa</h2>
+  <p>Listagem</p>                                                                  
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+      	<th>Título</th>
+        <th>Tipo de Pesquisa</th>
+        <th colspan="3" style="text-align: center;"><a href="#/novoProjeto"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="projeto in projetos">
+      	<td>{{projeto.titulo}}</td>
+        <td>{{projeto.tipoPesquisa}}</td>
+        <td>
+          <a ng-href="#/projeto/edit/{{projeto.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>
+        <td style="text-align: right;">
+        	<a ng-href="#/projetos/{{projeto.id}}/{{projeto.titulo}}/sessoes">Sessões</a>
+        </td>
+        <td style="text-align: right;">
+        	<a ng-href="#/projetos/{{projeto.id}}/{{projeto.titulo}}/trabalhosAcademicos">Trabalhos</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

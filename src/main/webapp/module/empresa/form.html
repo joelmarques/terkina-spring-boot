@@ -1,0 +1,107 @@
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	<legend>Dados da Empresa</legend>
+	<p>Formulário</p>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.nome.$invalid && !myForm.nome.$pristine}">
+	  <label class="col-md-4 control-label" for="nome">Nome</label>  
+	  <div class="col-md-5">
+		  <input id="nome" name="nome" type="text" class="form-control input-md" ng-model="empresa.nome" required placeholder="Obrigatório">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.nome.$valid && myForm.nome.$dirty}"></span>
+		  <span ng-show="myForm.nome.$error.required && !myForm.nome.$pristine" class="help-inline">Obrigatório</span>    
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.sigla.$invalid && !myForm.sigla.$pristine}">
+	  <label class="col-md-4 control-label" for="sigla">Sigla</label>  
+	  <div class="col-md-5">
+		  <input id="sigla" name="sigla" type="text" class="form-control input-md" ng-model="empresa.sigla" required placeholder="Obrigatório">
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.sigla.$valid && myForm.sigla.$dirty}"></span>
+		  <span ng-show="myForm.sigla.$error.required && !myForm.sigla.$pristine" class="help-inline">Obrigatório</span>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="telefone">Telefone</label>  
+	  <div class="col-md-5">
+		  <input id="telefone" name="telefone" type="text" class="form-control input-md" ng-model="empresa.telefone">
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="email">E-mail</label>  
+	  <div class="col-md-5">
+		  <input id="email" name="email" type="text" class="form-control input-md" ng-model="empresa.email" required placeholder="Obrigatório">
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.email.$valid && myForm.email.$dirty}"></span>
+		  <span ng-show="myForm.email.$error.required && !myForm.email.$pristine" class="help-inline">Obrigatório</span>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="endereco">Endereço</label>  
+	  <div class="col-md-5">
+		  <textarea class="form-control" id="endereco" name="endereco" ng-model="empresa.endereco" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="horarioDeFuncionamento">Horário de Funcionamento</label>  
+	  <div class="col-md-5">
+		  <input id="horarioDeFuncionamento" name="horarioDeFuncionamento" type="text" class="form-control input-md" ng-model="empresa.horarioDeFuncionamento">
+	  </div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="descricao">Descrição</label>
+	  <div class="col-md-5">                     
+	    <textarea class="form-control" id="descricao" name="descricao" ng-model="empresa.descricao" rows="15" ng-maxlength="5000"></textarea>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="objetivoUm">Objetivo 1</label>  
+	  <div class="col-md-5">
+		  <textarea class="form-control" id="objetivoUm" name="objetivoUm" ng-model="empresa.objetivoUm" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="objetivoDois">Objetivo 2</label>  
+	  <div class="col-md-5">
+		  <textarea class="form-control" id="objetivoDois" name="objetivoDois" ng-model="empresa.objetivoDois" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="objetivoTres">Objetivo 3</label>  
+	  <div class="col-md-5">
+		  <textarea class="form-control" id="objetivoTres" name="objetivoTres" ng-model="empresa.objetivoTres" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="urlVideo">Link do Vídeo Institucional</label>  
+	  <div class="col-md-5">
+		  <input id="urlVideo" name="urlVideo" type="text" class="form-control input-md" ng-model="empresa.urlVideo">
+	  </div>
+	</div>
+	
+	<div ng-include='"module/arquivo/include-arquivo.html"'></div>
+	
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">  	
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	  </div>
+	</div>
+	
+	</fieldset>
+</form>

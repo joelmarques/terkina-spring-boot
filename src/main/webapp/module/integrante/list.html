@@ -1,0 +1,30 @@
+<div class="container">
+	<h2>Integrantes</h2>
+	<p>Listagem</p>
+	<div class="table-responsive">
+		<table id="tableIntegrantes" class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Telefone</th>
+					<th>Perfis</th>
+					<th>Orientadores</th>
+					<th>Situação</th>
+					<th><a href="#/novoIntegrante"><i class="icon-plus-sign"></i>Novo</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="integrante in integrantes">
+					<td>{{integrante.nome}}</td>
+					<td>{{integrante.email}}</td>
+					<td>{{integrante.telefone}}</td>
+					<td><li ng-repeat="p in integrante.roles">{{p.descricao}}</li></td>
+					<td><li ng-repeat="o in integrante.orientadores">{{o.descricao}}</li></td>
+					<td>{{integrante.enable ? 'Habilitado' : 'Desabilitado'}}</td>
+					<td><a ng-href="#/integrantes/edit/{{integrante.id}}"><i class="icon-pencil"></i>Editar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

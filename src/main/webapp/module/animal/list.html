@@ -1,0 +1,39 @@
+<div class="container">
+  <h2>Animais</h2>
+  <p>Listagem</p>                                                                           
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+      	<th>Nome</th>
+        <th>Código</th>
+        <th>Sexagem</th>
+        <th>Espécie</th>
+        <th>Proveniência</th>
+        <th>Nascimento</th>
+        <th>Situação</th>
+        <th colspan="2" style="text-align: center;"><a href="#/novoAnimal"><i class="icon-plus-sign"></i>Novo</a></th>   
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="animal in animais">
+      	<td>
+      		<a ng-href="#/animais/edit/{{animal.id}}"><i class="icon-pencil"></i>{{animal.nome}}</a>
+      	</td>
+        <td>{{animal.codigo}}</td>
+        <td>{{animal.sexo}}</td>
+        <td>{{animal.especie}}</td>
+        <td>{{animal.proveniencia}}</td>
+        <td>{{animal.dataDeNascimento}}</td>
+        <td>{{animal.situacao}}</td>
+        <td style="text-align: right;">
+        	<a ng-href="#animais/{{animal.id}}/{{animal.nome}}/fichaClinica">Ficha Clínica</a>
+        </td>
+        <td style="text-align: left;">
+          	<a ng-href="#/animais/edit/{{animal.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

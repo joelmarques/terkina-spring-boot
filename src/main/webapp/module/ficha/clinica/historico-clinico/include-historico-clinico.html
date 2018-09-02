@@ -1,0 +1,87 @@
+<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Históricos Clínicos</h3> </div>	
+	<div class="panel-body">
+	
+	<div class="table-responsive">          
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Data</th>
+	        <th>Diagnóstico</th>
+	        <th>Período de Tratamento</th>
+	        <th>Resultado</th>
+	        <th><a href="" data-toggle="modal" data-target="#modalHistoricoClinico"><i class="icon-plus-sign"></i>Novo</a></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="historico in fichaClinica.historicosClinicos">
+	      	<td>{{historico.data | date : 'dd/MM/yyyy'}}</td>
+	      	<td>{{historico.diagnostico}}</td>
+	      	<td>{{historico.periodoDeTratamento}}</td>
+	      	<td>{{historico.resultado}}</td>
+	        <td>
+	          <a href="" ng-click="editarHistoricoClinico(historico)" data-toggle="modal" data-target="#modalHistoricoClinico"><i class="icon-pencil"></i>Editar</a>
+	        </td>        
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+    
+	  <!-- Modal -->
+	  <div class="modal fade" id="modalHistoricoClinico" role="dialog">
+	    <div class="modal-dialog">
+	
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 style="color:red;"><span class="glyphicon glyphicon-file"></span>Históricos Clínicos</h4>
+	        </div>
+	        <div class="modal-body">
+	        	
+	        	<div class="form-group">
+				  <label class="col-md-12" for="dataHistoricoClinico">Data</label>  
+				  <div class="col-md-12">
+				  	  <p class="input-group">
+						  <input id="dataHistoricoClinico" type="text" class="form-control" placeholder="dd/mm/aaaa" maxlength="10" 
+	                           uib-datepicker-popup="dd/MM/yyyy" is-open="calendarioDataHistoricoClinico.aberto" 
+	                           onkeypress="mascara(this, mdata);" ng-model="historicoClinico.data" 
+	                           show-button-bar="true"
+	                           current-text="Atual"
+	                           clear-text="Limpar"
+	                           close-text="Fechar"/>
+		                  <span class="input-group-btn">
+		                    <button type="button" class="btn btn-default" ng-click="abrirCalendarioDataHistoricoClinico()"><i class="glyphicon glyphicon-calendar"></i></button>
+		                  </span>
+	                  </p>
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="diagnostico">Diagnóstico</label>  
+				  <div class="col-md-12">
+					  <input id="diagnostico" name="diagnostico" type="text" class="form-control" ng-model="historicoClinico.diagnostico">
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="periodoDeTratamento">Período de tratamento</label>  
+				  <div class="col-md-12">
+					  <input id="periodoDeTratamento" name="periodoDeTratamento" type="text" class="form-control" ng-model="historicoClinico.periodoDeTratamento">
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="resultado">Resultado</label>  
+				  <div class="col-md-12">
+					  <input id="resultado" name="resultado" type="text" class="form-control" ng-model="historicoClinico.resultado">
+				  </div>
+				</div>
+				
+	            <button class="btn btn-default btn-success btn-block" data-dismiss="modal" ng-click="salvarHistoricoClinico()">Salvar</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+	<h2>Cursos</h2>
+	<p>Listagem</p>
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Sigla</th>
+					<th>Instituição</th>
+					<th><a href="#/novoCurso"><i class="icon-plus-sign"></i>Novo</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="curso in cursos">
+					<td>{{curso.nome}}</td>
+					<td>{{curso.sigla}}</td>
+					<td>{{curso.instituicao.nome}}</td>
+					<td><a ng-href="#/curso/edit/{{curso.id}}"><i class="icon-pencil"></i>Editar</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

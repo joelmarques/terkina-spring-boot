@@ -1,0 +1,53 @@
+    <nav class="navbar navbar-default navbar-fixed-top menu" role="navigation">
+        <div class="container menu">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" style="height: inherit;" href="#/">
+        		
+		        	<div class="logo-container">
+		                <div class="logo">
+		                    <img src="img/logo-DP.svg" height="50" rel="tooltip" >Terkina - Plataforma de Gerenciamento de Pesquisas com Animais                    
+		                </div>
+					</div>
+					        		
+        		</a>
+        		
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/projeto">Projetos</a></li>
+                    
+	                <li class="dropdown" ng-show="usuarioLogado.admin">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li class="dropdown-header">Pesquisador</li>
+							<li><a href="#/instituicao">Instituições de Ensino</a></li>
+							<li><a href="#/curso">Cursos</a></li>
+							<li><a href="#/integrantes">Integrantes</a></li>
+							<li style="margin-top: 15px"></li>
+							<li class="dropdown-header">Sujeito</li>
+							<li><a href="#/localizacao">Locais</a></li>
+							<li><a href="#/disciplina">Disciplinas/Técnicas</a></li>
+							<li><a href="#/tipoDeAnimal">Espécies</a></li>
+							<li><a href="#/animais">Animais</a></li>
+							<li><a href="#/tipoDePesquisa">Tipos de Pesquisas</a></li>
+							
+							<li role="separator" class="divider"></li>
+							<li><a href="#/empresas/edit">Dados da Empresa</a></li>							
+						</ul>
+					</li>
+					<li><a href="logout">Sair</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav navbar-nav navbar-right" style="margin-top: -30px; margin-right: -10px; color: #fff;"><h6>{{usuarioLogado.name}}</h6></div>         
+            
+        </div>
+	</nav>

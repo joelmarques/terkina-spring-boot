@@ -1,0 +1,35 @@
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	<legend>Tipos de Pesquisas</legend>
+	<p>Formulário</p>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.nome.$invalid && !myForm.nome.$pristine}">
+	  <label class="col-md-4 control-label" for="nome">Nome</label>  
+	  <div class="col-md-5">
+		  <input id="nome" name="nome" type="text" class="form-control input-md" ng-model="tipoDePesquisa.nome" required>  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.nome.$valid && myForm.nome.$dirty}"></span>
+		  <span ng-show="myForm.nome.$error.required && !myForm.nome.$pristine" class="help-inline">Obrigatório</span>    
+	  </div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="descricao">Descrição</label>
+	  <div class="col-md-5">                     
+	    <textarea class="form-control" id="descricao" name="descricao" ng-model="tipoDePesquisa.descricao" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">  	
+	  	<a id="cancelar" name="cancelar" class="btn btn-warning" href="#/tipoDePesquisa">Cancelar</a>
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	    <button id="excluir" name="excluir" class="btn btn-danger" ng-click="excluir(tipoDePesquisa.id)">Excluir</button>
+	  </div>
+	</div>
+	
+	</fieldset>
+</form>

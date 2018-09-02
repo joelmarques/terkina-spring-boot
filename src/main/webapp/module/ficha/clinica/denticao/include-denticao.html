@@ -1,0 +1,76 @@
+<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Dentições</h3> </div>	
+	<div class="panel-body">
+	
+	<div class="table-responsive">          
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Data</th>
+	        <th>Situação</th>
+	        <th><a href="" data-toggle="modal" data-target="#modalDenticao"><i class="icon-plus-sign"></i>Novo</a></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="denticao in fichaClinica.denticoes">
+	      	<td>{{denticao.data | date : 'dd/MM/yyyy'}}</td>
+	      	<td>{{denticao.situacao}}</td>
+	        <td>
+	          <a href="" ng-click="editarDenticao(denticao)" data-toggle="modal" data-target="#modalDenticao"><i class="icon-pencil"></i>Editar</a>
+	        </td>        
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+    
+	  <!-- Modal -->
+	  <div class="modal fade" id="modalDenticao" role="dialog">
+	    <div class="modal-dialog">
+	
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 style="color:red;"><span class="glyphicon glyphicon-file"></span>Dentições</h4>
+	        </div>
+	        <div class="modal-body">
+	        	
+	        	<div class="form-group">
+				  <label class="col-md-12" for="dataManejo">Data</label>  
+				  <div class="col-md-12">
+				  	  <p class="input-group">
+						  <input id="dataDenticao" type="text" class="form-control" placeholder="dd/mm/aaaa" maxlength="10" 
+	                           uib-datepicker-popup="dd/MM/yyyy" is-open="calendarioDataDenticao.aberto" 
+	                           onkeypress="mascara(this, mdata);" ng-model="denticao.data" 
+	                           show-button-bar="true"
+	                           current-text="Atual"
+	                           clear-text="Limpar"
+	                           close-text="Fechar"/>
+		                  <span class="input-group-btn">
+		                    <button type="button" class="btn btn-default" ng-click="abrirCalendarioDataDenticao()"><i class="glyphicon glyphicon-calendar"></i></button>
+		                  </span>
+	                  </p>
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="situacao">Situação</label>  
+				  <div class="col-md-12">
+					  <input id="situacao" name="situacao" type="text" class="form-control" ng-model="denticao.situacao">  
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="observacoes">Observações</label>  
+				  <div class="col-md-12">
+					  <textarea id="observacoes" name="observacoes" type="text" class="form-control" ng-model="denticao.observacoes" rows="15"></textarea>
+				  </div>
+				</div>
+				
+	            <button class="btn btn-default btn-success btn-block" data-dismiss="modal" ng-click="salvarDenticao()">Salvar</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

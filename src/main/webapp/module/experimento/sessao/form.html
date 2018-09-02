@@ -1,0 +1,138 @@
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	<legend>Sessão > {{sessao.dataSessao | date:'dd/MM/yyyy HH:mm'}}</legend>
+	<h6>Projeto > {{tituloProjeto}}</h6>
+	<p>Formulário > {{etapa}}</p>
+	
+	<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Dados Gerais</h3> </div>	
+	<div class="panel-body">
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="disciplina">Disciplina</label>
+	  <div class="col-md-5">	    
+	    <select ng-model="sessao.disciplina" ng-options="t.descricao for t in disciplinas track by t.id"></select>	    
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.dataSessao.$invalid && !myForm.dataSessao.$pristine}">
+	  <label class="col-md-4 control-label" for="dataSessao">Data (dia/mês/ano HH:mm)</label>  
+	  <div class="col-md-5">
+		  <input id="dataSessao" name="dataSessao" type="text" class="form-control" uib-datepicker-popup="dd/MM/yyyy HH:mm"
+		  		 ng-model="sessao.dataSessao"/>
+		  <span ng-class="error" ng-show="myForm.dataSessao.$error.date">Data inválida!</span>
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.dataSessao.$valid && myForm.dataSessao.$dirty}"></span>		  
+	  </div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="observacoes">Observações</label>
+	  <div class="col-md-5">                     
+	    <textarea class="form-control" id="observacoes" name="observacoes" ng-model="sessao.observacoes" rows="15" required placeholder="Obrigatório"></textarea>
+	    <span ng-class="{'glyphicon glyphicon-ok' : myForm.observacoes.$valid && myForm.observacoes.$dirty}"></span>
+	  </div>
+	</div>
+	
+	</div>    
+    </div>
+    </div>
+	
+	<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Pesquisadores</h3> </div>	
+	<div class="panel-body">
+	
+	<!-- picklist pesquisadores -->
+	<div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-5">
+        
+        	<div class="ng-pristine ng-valid" style="display: table;width:100%;display: table;width:100%">
+        		<div style="display: table-row;">
+				
+					<div style="display: table-cell; width: 40%;vertical-align: middle;">
+						<label class="control-label">Não Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select1" name="my_multi_select1[]" size="15" style="width: 90%">
+			                <option ng-repeat="p in pesquisadores" value="{{p.id}}" ng-click="adicionarPesquisador($index, p)">{{p.descricao}}</option>
+			            </select>
+		            </div>
+		            
+			            <div style="display: table-cell; width: 10%; vertical-align: middle;" class="btn-group-vertical">
+			            	<div>
+			            		<button type="button" class="btn btn-info" data-ng-click="">
+			            			<span class="glyphicon glyphicon-refresh"></span>
+			            		</button>
+			            	</div>
+			            </div>
+		            
+		            <div style="display: table-cell; width: 40%;vertical-align: middle;">
+		            	<label class="control-label">Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select2" name="my_multi_select2[]" size="15" style="width: 90%">
+			                <option ng-repeat="p in sessao.pesquisadores" value="{{p.id}}" ng-click="removerPesquisador($index, p)">{{p.descricao}}</option>
+			            </select>
+		            </div>
+	            </div>
+            
+            </div>
+         </div>
+    </div>    
+    </div>
+    </div>
+    
+    <div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Animais</h3> </div>	
+	<div class="panel-body" >
+	
+	<!-- picklist animais-->
+	<div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-5">
+        
+        	<div class="ng-pristine ng-valid" style="display: table;width:100%;display: table;width:100%">
+        		<div style="display: table-row;">
+				
+					<div style="display: table-cell; width: 40%;vertical-align: middle;">
+						<label class="control-label">Não Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select3" name="my_multi_select3[]" size="15" style="width: 90%">
+			                <option ng-repeat="a in animais" value="{{a.id}}" ng-click="adicionarAnimal($index, a)">{{a.descricao}}</option>
+			            </select>
+		            </div>
+		            
+		            <div style="display: table-cell; width: 10%; vertical-align: middle;" class="btn-group-vertical">
+		            	<div>
+		            		<button type="button" class="btn btn-info" data-ng-click="">
+		            			<span class="glyphicon glyphicon-refresh"></span>
+		            		</button>
+		            	</div>
+		            </div>
+		            
+		            <div style="display: table-cell; width: 40%;vertical-align: middle;">
+		            	<label class="control-label">Selecionados</label>
+			            <select  multiple="multiple" class="multi-select" id="my_multi_select4" name="my_multi_select4[]" size="15" style="width: 90%">
+			                <option ng-repeat="a in sessao.animais" value="{{a.id}}" ng-click="removerAnimal($index, a)">{{a.descricao}}</option>
+			            </select>
+		            </div>
+	            </div>
+            
+            </div>
+         </div>
+    </div>
+    
+    </div>
+    </div>
+    
+    <div ng-include='"module/arquivo/include-arquivo.html"'></div>
+	
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">
+	  	<button id="cancelar" name="cancelar" class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	  </div>
+	</div>
+
+	</fieldset>
+</form>

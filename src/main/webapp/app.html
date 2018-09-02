@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="terkinaApp">
+
+	<head>
+	    <title>Terkina - Plataforma de Gerenciamento de Pesquisas com Animais</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link href="img/shortcut.ico" rel="shortcut icon"/>
+	    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	    <link href="css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
+	    <link href="css/style.css" rel="stylesheet" type="text/css"/>
+	    <link href="css/team.css" rel="stylesheet" type="text/css"/>
+	    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>	
+		
+		<div ng-include='"module/templates/header.html"'></div>
+		<div class="container-fluid" ng-view="conteudo"></div>
+<!-- 		<div ng-include='"module/templates/footer.html"'></div> -->
+	    
+	    <!-- javascripts gerais da arquitetura -->
+		<script src="js/angular.min.js"></script>
+        <script src="js/angular-resource.min.js"></script>
+        <script src="js/angular-route.min.js"></script>
+        <script src="js/angular-locale_pt-br.js"></script>
+        <script src="js/jquery-1.12.1.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/ui-bootstrap-tpls-1.2.5.min.js"></script>
+        <script src="js/angular-input-masks-standalone.min.js"></script>
+        <script src="js/FileSaver.min.js"></script>
+        <script src="js/file-utils.js"></script>
+        <script src="js/mascara.js"></script>
+        <script src="js/checklist-model.js"></script>
+        
+        <!-- javascripts especificos do projeto -->
+		<script src="module/app.js"></script>
+		<script src="module/instituicao/controller.js"></script>
+		<script src="module/curso/controller.js"></script>
+		<script src="module/localizacao/controller.js"></script>
+		<script src="module/disciplina/controller.js"></script>
+		<script src="module/tipoanimal/controller.js"></script>
+		<script src="module/animal/controller.js"></script>
+		<script src="module/tipopesquisa/controller.js"></script>
+		<script src="module/empresa/controller.js"></script>
+		<script src="module/experimento/projeto/controller.js"></script>
+		<script src="module/experimento/sessao/controller.js"></script>
+		<script src="module/experimento/trabalho/controller.js"></script>
+		<script src="module/ficha/clinica/controller.js"></script>
+		<script src="module/integrante/controller.js"></script>
+		
+	</body>
+
+</html>

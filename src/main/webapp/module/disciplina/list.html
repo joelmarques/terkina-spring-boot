@@ -1,0 +1,27 @@
+
+<div class="container">
+  <h2>Disciplinas / Técnicas</h2>
+  <p>Listagem</p>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th>Grau</th>
+        <th><a href="#/novaDisciplina"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="disciplina in disciplinas">
+      	<td>{{disciplina.nome}}</td>
+        <td>{{disciplina.sigla}}</td>
+        <td>{{disciplina.grau}}</td>
+        <td>
+          <a ng-href="#/disciplina/edit/{{disciplina.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

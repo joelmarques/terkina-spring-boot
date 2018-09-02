@@ -1,0 +1,24 @@
+<section class="our-team" id="team">
+	<h3 class="text-center"></h3>
+	<p class="text-center"></p>
+	<div class="container">
+		<ul class="ch-grid">
+		
+			<li ng-repeat="animal in animais">
+				<div class="ch-item ch-img" style="background-image: url({{animal.urlFoto}});">
+					<div class="ch-info">
+						<h4>{{animal.nome}}({{animal.codigo}})</h5>
+						<ul class="social-icons1">
+							<li><a href=""><i class="fa fa-book"></i></a></li>
+						</ul>
+					</div>
+				</div>
+<!-- 				<div class="team-details"> -->
+<!-- 					<h5>{{animal.nome}}</h5> -->
+<!-- 					<p>{{(animal.tipoDeAnimal.nome)}}</p> -->
+<!-- 				</div> -->
+			</li>
+						
+		</ul>				
+	</div>	
+</section>

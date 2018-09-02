@@ -1,0 +1,152 @@
+
+<ol class="breadcrumb">
+  <li><a href="#animais">Animais</a></li>
+  <li class="active">{{animal.nome}}</li>
+  <li>{{etapa}}</li>
+</ol>
+
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.nome.$invalid && !myForm.nome.$pristine}">
+	  <label class="col-md-4 control-label" for="nome">Nome</label>  
+	  <div class="col-md-5">
+		  <input id="nome" name="nome" type="text" class="form-control input-md" ng-model="animal.nome" required placeholder="Obrigatório">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.nome.$valid && myForm.nome.$dirty}"></span>
+		  <span ng-show="myForm.nome.$error.required && !myForm.nome.$pristine" class="help-inline">Obrigatório</span>    
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.codigo.$invalid && !myForm.codigo.$pristine}">
+	  <label class="col-md-4 control-label" for="codigo">Código</label>  
+	  <div class="col-md-5">
+		  <input id="codigo" name="codigo" type="text" class="form-control input-md" ng-model="animal.codigo" required placeholder="Obrigatório">
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.codigo.$valid && myForm.codigo.$dirty}"></span>
+		  <span ng-show="myForm.codigo.$error.required && !myForm.codigo.$pristine" class="help-inline">Obrigatório</span>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.dataDeNascimento.$invalid && !myForm.dataDeNascimento.$pristine}">
+	  <label class="col-md-4 control-label" for="dataDeNascimento">Data de nascimento(dia/mês/ano)</label>  
+	  <div class="col-md-5">
+		  <input id="dataDeNascimento" name="dataDeNascimento" type="text" class="form-control"
+	  		     onkeypress="mascara(this, mdata);" maxlength="10" ng-model="animal.dataDeNascimento" required placeholder="Obrigatório"/>
+		  <span ng-class="error" ng-show="myForm.dataDeNascimento.$error.date">Data inválida!</span>
+		  <span ng-class="error" ng-show="myForm.dataDeNascimento.$error.required && !myForm.dataDeNascimento.$pristine">Obrigatório</span>
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.dataDeNascimento.$valid && myForm.dataDeNascimento.$dirty}"></span>		  
+	  </div>
+	</div>
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="especie">Espécie</label>
+	  <div class="col-md-5">	    
+	    <select id="especie" name="especie" ng-model="animal.especie" ng-options="t.descricao for t in especies track by t.id" ng-required="true"></select>
+	    <span ng-class="error" ng-show="myForm.especie.$error.required">Obrigatório</span>    
+	  </div>
+	</div>
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="sexo">Sexo</label>
+	  <div class="col-md-5">	    
+	    <select id="sexo" name="sexo" ng-model="animal.sexo" ng-options="t for t in sexos track by t" ng-required="true"></select>
+	    <span ng-class="error" ng-show="myForm.sexo.$error.required">Obrigatório</span>
+	  </div>
+	</div>
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="situacao">Situação</label>
+	  <div class="col-md-5">	    
+	    <select id="situacao" name="situacao" ng-model="animal.situacao" ng-options="t for t in situacoes track by t" ng-required="true"></select>
+	    <span ng-class="error" ng-show="myForm.situacao.$error.required">Obrigatório</span>	    
+	  </div>
+	</div>
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="origem">Local de Origem</label>
+	  <div class="col-md-5">
+	    <select ng-model="animal.origem" ng-options="t.descricao for t in localizacoes track by t.id"></select>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.dataDeEntrada.$invalid && !myForm.dataDeEntrada.$pristine}">
+	  <label class="col-md-4 control-label" for="dataDeEntrada">Data de entrada(dia/mês/ano)</label>  
+	  <div class="col-md-5">
+		  <input id="dataDeEntrada" name="dataDeEntrada" type="text" class="form-control" 
+		  		 onkeypress="mascara(this, mdata);" maxlength="10" ng-model="animal.dataDeEntrada" required placeholder="Obrigatório"/>
+		  <span ng-class="error" ng-show="myForm.dataDeEntrada.$error.date">Data inválida!</span>
+		  <span ng-class="error" ng-show="myForm.dataDeEntrada.$error.required && !myForm.dataDeEntrada.$pristine">Obrigatório</span>
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.dataDeEntrada.$valid && myForm.dataDeEntrada.$dirty}"></span>		  
+	  </div>
+	</div>
+	
+	<!-- Select Basic -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="destino">Local de Destino</label>
+	  <div class="col-md-5">
+	    <select ng-model="animal.destino" ng-options="t.descricao for t in localizacoes track by t.id"></select>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.dataDeSaida.$invalid && !myForm.dataDeSaida.$pristine}">
+	  <label class="col-md-4 control-label" for="dataDeSaida">Data de saída(dia/mês/ano)</label>  
+	  <div class="col-md-5">
+		  <input id="dataDeSaida" name="dataDeSaida" type="text" class="form-control" 
+		  		 onkeypress="mascara(this, mdata);" maxlength="10" ng-model="animal.dataDeSaida"/>
+		  <span ng-class="error" ng-show="myForm.dataDeSaida.$error.date">Data inválida!</span>
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.dataDeSaida.$valid && myForm.dataDeSaida.$dirty}"></span>		  
+	  </div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="causaDaSaida">Causa da saída</label>
+	  <div class="col-md-5">                     
+	    <textarea class="form-control" id="causaDaSaida" name="causaDaSaida" ng-model="animal.causaDaSaida" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<!-- Textarea -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="descricao">Descrição</label>
+	  <div class="col-md-5">   
+	    <textarea class="form-control" id="descricao" name="descricao" ng-model="animal.descricao" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-class="{'has-error' : myForm.foto.$invalid && myForm.foto.$dirty}">
+	  <label class="col-md-4 control-label" for="foto">URL(Foto)</label>
+	  <div class="col-md-5">
+	  	<span ng-class="{'glyphicon glyphicon-ok' : myForm.foto.$valid && myForm.foto.$dirty}"></span>	
+	  	<input id="foto" name="foto" type="url" class="form-control input-md" maxlength="500" ng-maxlength="500" 
+	  		   ng-model="animal.urlFoto" required placeholder="Obrigatório"
+	  		   onchange="angular.element(this).scope().onChangeFoto(this)"/>
+	  	<p class="help-block" ng-show="myForm.foto.$invalid && myForm.foto.$dirty">URL da Foto inválida.</p>
+	  	<div ng-if="animal.urlFoto">
+         <img ng-src="{{animal.urlFoto}}" width="500" height="250"/>
+       </div>
+	  </div>
+	</div>
+	
+	<div ng-include='"module/arquivo/include-arquivo.html"'></div>
+	
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">  	
+	  	<button id="cancelar" name="cancelar" class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	    <button id="excluir" name="excluir" class="btn btn-danger" ng-click="excluir(animal.id)">Excluir</button>
+	  </div>
+	</div>
+	
+	</fieldset>
+</form>

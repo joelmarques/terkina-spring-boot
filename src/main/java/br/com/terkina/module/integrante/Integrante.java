@@ -50,7 +50,10 @@ import lombok.Setter;
 					  		+ "	 	(select r.id from profile r"
 					  		+ "  	where r.name = ?1))"
 					  		+ "	and i.tenancy = ?2"
-					  		+ " and i.enable = ?3")	
+					  		+ " and i.enable = ?3"),
+	
+	@NamedNativeQuery(name="Integrante.findMaxTenancy",
+	  				  query="select max(i.tenancy) from integrante i"),
 	
 })
 public class Integrante extends EntityBase<Long> {

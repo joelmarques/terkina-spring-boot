@@ -2,7 +2,8 @@ package br.com.terkina.base.utils;
 
 import java.util.Random;
 
-//import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class PasswordUtils {
 	
@@ -32,12 +33,8 @@ public class PasswordUtils {
 		return getRandomPassword(8);
 	}
 	
-	//TODO
 	public static String encode(String password) {
-		
-//		ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
-		
-//		return encoder.encodePassword(password, null);
-		return password;
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		return encoder.encode(password);
 	}
 }

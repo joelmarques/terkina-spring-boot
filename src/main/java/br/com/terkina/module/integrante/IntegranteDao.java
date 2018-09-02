@@ -18,6 +18,9 @@ public interface IntegranteDao extends JpaRepository<Integrante, Long> {
 	
 	Integrante findByEmail(String email);
 	
+	@Query(name="Integrante.findMaxTenancy", nativeQuery=false)
+	Long findMaxTenancy();
+	
 	@Query(name="Integrante.findTenancyByEmail", nativeQuery=true)
 	Long findTenancyByEmail(String email);
 	

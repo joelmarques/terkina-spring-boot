@@ -196,10 +196,24 @@
 	<script type="text/javascript">
 		$().ready(function(){
 			$("#buttonCreateAccount").click(function(){
+				
 				var email = $("#emailCreateAccount").val();
+				
 				if (email != "") {
-					var url = 'http://localhost:8083/publico/register';
-					$.post(url,email,function(reponse){});
+					
+					$.ajax({
+				          url : "http://localhost:8083/publico/register",
+				          type : 'post',
+				          contentType: "application/json; charset=utf-8",
+				          dataType: 'json',
+				          data : JSON.stringify ({email:email}),
+				          beforeSend : function(){}
+				     })
+				     .done(function(response){
+				     })
+				     .fail(function(jqXHR, status, msg){
+				     });
+					
 					$('#modalAlertSuccess').modal('show');
 				} else {
 					$('#modalAlertInfo').modal('show');

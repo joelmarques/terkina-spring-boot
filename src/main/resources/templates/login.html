@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Terkina - Plataforma de Gerenciamento de Pesquisas com Animais</title>
 	<meta charset="utf-8" />
@@ -51,7 +51,7 @@
 				<div class="row">
 					<div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
 						<div class="card card-signup" style="opacity: 0.8; background: #fff;">
-							<form class="form" name="formLogin" action="login" method="post">
+							<form class="form" name="f" th:action="@{/login}" method="post">
 								<div class="header header-primary text-center" style="opacity: 0.8; background: #8a6d3b;">
 									<h4>Login</h4>
 								</div>
@@ -198,7 +198,7 @@
 			$("#buttonCreateAccount").click(function(){
 				var email = $("#emailCreateAccount").val();
 				if (email != "") {
-					var url = 'http://localhost:8080/terkina/publico/register';
+					var url = 'http://localhost:8083/publico/register';
 					$.post(url,email,function(reponse){});
 					$('#modalAlertSuccess').modal('show');
 				} else {

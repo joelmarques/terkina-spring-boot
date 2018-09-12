@@ -3,7 +3,6 @@ package br.com.terkina.module.user;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
-import java.util.Optional;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,10 @@ public class DefaultUserService implements UserService {
 	}
 	
 	private Long getNextTenancy() {
-		return Optional.ofNullable(this.integranteDao.findMaxTenancy()).orElse(new Long(1));
+		
+		Long maxTenancy = this.integranteDao.findMaxTenancy();
+		
+		return Objects.isNull(maxTenancy) ? Long.valueOf(1) : Long.valueOf(maxTenancy + 1);
 	}
 	
 	private Integrante createNewAccount(final String email) {

@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Instituições</h2>
+  <p>Listagem</p>
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Sigla</th>
+        <th><a href="#/novaInstituicao"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="instituicao in instituicoes">
+      	<td>{{instituicao.nome}}</td>
+        <td>{{instituicao.sigla}}</td>
+        <td>
+          <a ng-href="#/instituicao/edit/{{instituicao.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

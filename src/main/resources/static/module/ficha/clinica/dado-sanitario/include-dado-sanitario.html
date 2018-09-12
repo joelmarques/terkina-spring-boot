@@ -1,0 +1,98 @@
+<div class="panel panel-success">
+	<div class="panel-heading"> <h3 class="panel-title">Dados Sanitários</h3> </div>	
+	<div class="panel-body">
+	
+	<div class="table-responsive">          
+	  <table class="table">
+	    <thead>
+	      <tr>
+	        <th>Data</th>
+	        <th>Resultado</th>
+	        <th>Vermifugo utilizado</th>
+	        <th>Data da vermifugação</th>
+	        <th><a href="" data-toggle="modal" data-target="#modalDadoSanitario"><i class="icon-plus-sign"></i>Novo</a></th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr ng-repeat="ds in fichaClinica.dadosSanitarios">
+	      	<td>{{ds.data | date : 'dd/MM/yyyy'}}</td>
+	      	<td>{{ds.resultado}}</td>
+	      	<td>{{ds.vermifugoUtilizado}}</td>
+	      	<td>{{ds.dataVermifugacao | date : 'dd/MM/yyyy'}}</td>
+	        <td>
+	          <a href="" ng-click="editarDadoSanitario(ds)" data-toggle="modal" data-target="#modalDadoSanitario"><i class="icon-pencil"></i>Editar</a>
+	        </td>        
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+    
+	  <!-- Modal -->
+	  <div class="modal fade" id="modalDadoSanitario" role="dialog">
+	    <div class="modal-dialog">
+	
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h4 style="color:red;"><span class="glyphicon glyphicon-file"></span>Dados Sanitários</h4>
+	        </div>
+	        <div class="modal-body">
+	        	
+	        	<div class="form-group">
+				  <label class="col-md-12" for="dataDadoSanitario">Data</label>  
+				  <div class="col-md-12">
+				  	  <p class="input-group">
+						  <input id="dataDadoSanitario" type="text" class="form-control" placeholder="dd/mm/aaaa" maxlength="10" 
+	                           uib-datepicker-popup="dd/MM/yyyy" is-open="calendarioDataDadoSanitario.aberto" 
+	                           onkeypress="mascara(this, mdata);" ng-model="dadoSanitario.data" 
+	                           show-button-bar="true"
+	                           current-text="Atual"
+	                           clear-text="Limpar"
+	                           close-text="Fechar"/>
+		                  <span class="input-group-btn">
+		                    <button type="button" class="btn btn-default" ng-click="abrirCalendarioDataDadoSanitario()"><i class="glyphicon glyphicon-calendar"></i></button>
+		                  </span>
+	                  </p>
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="resultado">Resultado</label>  
+				  <div class="col-md-12">
+					  <input id="resultado" name="resultado" type="text" class="form-control" ng-model="dadoSanitario.resultado">
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="vermifugoUtilizado">Vermifugo utilizado</label>  
+				  <div class="col-md-12">
+					  <input id="vermifugoUtilizado" name="vermifugoUtilizado" type="text" class="form-control" ng-model="dadoSanitario.vermifugoUtilizado">
+				  </div>
+				</div>
+				
+				<div class="form-group">
+				  <label class="col-md-12" for="dataVermifugacao">Data da vermifugação</label>  
+				  <div class="col-md-12">
+				  	  <p class="input-group">
+						  <input id="dataVermifugacao" type="text" class="form-control" placeholder="dd/mm/aaaa" maxlength="10" 
+	                           uib-datepicker-popup="dd/MM/yyyy" is-open="calendarioDataVermifugacao.aberto" 
+	                           onkeypress="mascara(this, mdata);" ng-model="dadoSanitario.dataVermifugacao" 
+	                           show-button-bar="true"
+	                           current-text="Atual"
+	                           clear-text="Limpar"
+	                           close-text="Fechar"/>
+		                  <span class="input-group-btn">
+		                    <button type="button" class="btn btn-default" ng-click="abrirCalendarioDataVermifugacao()"><i class="glyphicon glyphicon-calendar"></i></button>
+		                  </span>
+	                  </p>
+				  </div>
+				</div>
+				
+	            <button class="btn btn-default btn-success btn-block" data-dismiss="modal" ng-click="salvarDadoSanitario()">Salvar</button>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>

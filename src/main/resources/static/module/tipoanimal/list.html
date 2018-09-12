@@ -1,0 +1,27 @@
+<!-- Listagem de Tipos de Animais -->
+
+   
+ <div class="container">
+  <h2>Espécies</h2>
+  <p>Listagem</p>                                                                             
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome científico</th>
+        <th>Nome vulgar</th>
+        <th><a href="#/novoTipoDeAnimal"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tipoDeAnimal in tiposDeAnimal">
+        <td>{{tipoDeAnimal.nome}}</td>
+        <td>{{tipoDeAnimal.nomeVulgar}}</td>
+        <td>
+          <a ng-href="#/tipoDeAnimal/edit/{{tipoDeAnimal.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

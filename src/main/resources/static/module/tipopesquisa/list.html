@@ -1,0 +1,24 @@
+ <div class="container">
+  <h2>Tipos de Pesquisas</h2>
+  <p>Listagem</p>                                                                             
+  <div class="table-responsive">          
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data de cadastro</th>
+        <th><a href="#/novoTipoDePesquisa"><i class="icon-plus-sign"></i>Novo</a></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="tipo in tiposDePesquisa">
+        <td>{{tipo.nome}}</td>
+        <td>{{tipo.registrationDate | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <a ng-href="#/tipoDePesquisa/edit/{{tipo.id}}"><i class="icon-pencil"></i>Editar</a>
+        </td>        
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

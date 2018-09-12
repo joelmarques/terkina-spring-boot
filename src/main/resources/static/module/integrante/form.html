@@ -1,0 +1,138 @@
+<form name="myForm" class="form-horizontal">
+	<fieldset>	
+	<legend>Integrantes</legend>
+	<p>Formulário > {{etapa}}</p>
+	
+	<div class="form-group" ng-class="{error: myForm.nome.$invalid && !myForm.nome.$pristine}">
+	  <label class="col-md-4 control-label" for="nome">Nome</label>  
+	  <div class="col-md-5">
+		  <input id="nome" name="nome" type="text" class="form-control input-md" ng-model="integrante.nome" required placeholder="Obrigatório">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.nome.$valid && myForm.nome.$dirty}"></span>
+		  <span ng-show="myForm.nome.$error.required && !myForm.nome.$pristine" class="help-inline">Obrigatório</span>    
+	  </div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-4 control-label" for="enable">Situação</label>
+		<div class="col-md-5">
+			<label class="radio-inline">
+				<input id="habilitado" name="enable" type="radio" ng-model="integrante.enable" ng-value="true">Habilitado
+			</label>
+			<label class="radio-inline">
+				<input id="desabilitado" name="enable" type="radio" ng-model="integrante.enable" ng-value="false">Desabilitado
+			</label>
+		</div>	
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-4 control-label">Perfis</label>
+		<div class="col-md-5">
+			<label ng-repeat="role in roles" class="checkbox-inline">
+			  <input type="checkbox" data-checklist-model="integrante.roles" data-checklist-value="role"> {{role.descricao}}
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-4 control-label">Cursos</label>
+		<div class="col-md-5">
+			<label ng-repeat="curso in cursos" class="checkbox-inline">
+			  <input type="checkbox" data-checklist-model="integrante.cursos" data-checklist-value="curso"> {{curso.descricao}}
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<label class="col-md-4 control-label">Orientadores</label>
+		<div class="col-md-5">
+			<label ng-repeat="orientador in orientadores" class="checkbox-inline">
+			  <input type="checkbox" data-checklist-model="integrante.orientadores" data-checklist-value="orientador"> {{orientador.descricao}}
+			</label>
+		</div>
+	</div>
+	
+	<div class="form-group" ng-class="{error: myForm.cpf.$invalid && !myForm.cpf.$pristine}">
+	  <label class="col-md-4 control-label" for="cpf">CPF</label>  
+	  <div class="col-md-5">
+		  <input id="cpf" name="cpf" type="text" class="form-control input-md" ng-model="integrante.cpf" 
+		  		 ui-br-cpf-mask>  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.cpf.$valid && myForm.cpf.$dirty}"></span>
+		  <span ng-show="myForm.cpf.$error.cpf && !myForm.cpf.$pristine" class="help-inline">CPF inválido!</span>    
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-class="{error: myForm.email.$invalid && !myForm.email.$pristine}">
+	  <label class="col-md-4 control-label" for="email">E-mail</label>  
+	  <div class="col-md-5">
+		  <input id="email" name="email" type="text" class="form-control input-md" ng-model="integrante.email">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.email.$valid && myForm.email.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-class="{error: myForm.telefone.$invalid && !myForm.telefone.$pristine}">
+	  <label class="col-md-4 control-label" for="telefone">Telefone</label>  
+	  <div class="col-md-5">
+		  <input id="telefone" name="telefone" type="text" class="form-control input-md" ng-model="integrante.telefone" 
+		  		 ui-br-phone-number>  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.telefone.$valid && myForm.telefone.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<!-- Text input-->
+	<div class="form-group" ng-class="{error: myForm.linkedin.$invalid && !myForm.linkedin.$pristine}">
+	  <label class="col-md-4 control-label" for="linkedin">Linkedin</label>  
+	  <div class="col-md-5">
+		  <input id="linkedin" name="linkedin" type="text" class="form-control input-md" ng-model="integrante.linkedin">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.linkedin.$valid && myForm.linkedin.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-class="{error: myForm.facebook.$invalid && !myForm.facebook.$pristine}">
+	  <label class="col-md-4 control-label" for="facebook">Facebook</label>  
+	  <div class="col-md-5">
+		  <input id="facebook" name="facebook" type="text" class="form-control input-md" ng-model="integrante.facebook">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.facebook.$valid && myForm.facebook.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-class="{error: myForm.curriculoLattes.$invalid && !myForm.curriculoLattes.$pristine}">
+	  <label class="col-md-4 control-label" for="curriculoLattes">Currículo Lattes</label>  
+	  <div class="col-md-5">
+		  <input id="curriculoLattes" name="curriculoLattes" type="text" class="form-control input-md" ng-model="integrante.curriculoLattes">  
+		  <span ng-class="{'glyphicon glyphicon-ok' : myForm.curriculoLattes.$valid && myForm.curriculoLattes.$dirty}"></span>
+	  </div>
+	</div>
+	
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="resumo">Breve resumo</label>
+	  <div class="col-md-5">                     
+	    <textarea class="form-control" id="resumo" name="resumo" ng-model="integrante.resumo" rows="5"></textarea>
+	  </div>
+	</div>
+	
+	<div class="form-group" ng-class="{'has-error' : myForm.foto.$invalid && myForm.foto.$dirty}">
+	  <label class="col-md-4 control-label" for="foto">URL(Foto)</label>
+	  <div class="col-md-5">
+	  	<span ng-class="{'glyphicon glyphicon-ok' : myForm.foto.$valid && myForm.foto.$dirty}"></span>	
+	  	<input id="foto" name="foto" type="url" class="form-control input-md" maxlength="500" ng-maxlength="500" 
+	  		   ng-model="integrante.urlFoto" required placeholder="Obrigatório"
+	  		   onchange="angular.element(this).scope().onChangeFoto(this)"/>
+	  	<p class="help-block" ng-show="myForm.foto.$invalid && myForm.foto.$dirty">URL da Foto inválida.</p>
+	  	<div ng-if="integrante.urlFoto">
+         <img id="fotoPreview" ng-src="{{integrante.urlFoto}}" width="500" height="250"/>
+       </div>
+	  </div>
+	</div>
+		
+	<!-- Button -->
+	<div class="form-group">
+	  <label class="col-md-4 control-label" for="salvar"></label>
+	  <div class="col-md-8">  	
+	  	<button id="cancelar" name="cancelar" class="btn btn-warning" ng-click="cancelar()">Cancelar</button>
+	    <button id="salvar" name="salvar" class="btn btn-success" ng-click="salvar()" ng-disabled="myForm.$invalid">Salvar</button>
+	    <button id="excluir" name="excluir" class="btn btn-danger" ng-click="excluir(integrante.id)">Excluir</button>
+	  </div>
+	</div>
+	
+	</fieldset>
+</form>

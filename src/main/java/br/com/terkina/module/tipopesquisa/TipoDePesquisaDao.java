@@ -11,6 +11,8 @@ import br.com.terkina.base.model.Item;
 @Repository
 public interface TipoDePesquisaDao extends JpaRepository<TipoDePesquisa, Long> {
 	
+	List<TipoDePesquisa> findByTenancy(Long tenancy);
+	
 	@Query(name="TipoDePesquisa.findAllByTenancy", nativeQuery=true)
 	List<Item> findAllByTenancy(Long tenancy);
 }

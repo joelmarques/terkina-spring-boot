@@ -68,5 +68,5 @@
     })
     
     .factory('instituicaoResource', function ($resource) {
-    	return $resource('resources/instituicao/:id');
+    	return $resource('resources/instituicoes/:id');
     });

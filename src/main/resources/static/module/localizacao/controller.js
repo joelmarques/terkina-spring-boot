@@ -68,5 +68,5 @@
     })
     
     .factory('localizacaoResource', function ($resource) {
-    	return $resource('resources/localizacao/:id');
+    	return $resource('resources/localizacoes/:id');
     });

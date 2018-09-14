@@ -11,6 +11,8 @@ import br.com.terkina.base.model.Item;
 @Repository
 public interface TipoDeAnimalDao extends JpaRepository<TipoDeAnimal, Long> {
 	
+	List<TipoDeAnimal> findByTenancy(Long tenancy);
+	
 	@Query(value = "SELECT id AS id, nome AS descricao FROM tipo_animal WHERE tenancy = ?1", nativeQuery = true)
 	List<Item> getItems(Long tenancy);
 }

@@ -11,6 +11,8 @@ import br.com.terkina.base.model.Item;
 @Repository
 public interface DisciplinaDao extends JpaRepository<Disciplina, Long> {
 	
+	List<Disciplina> findByTenancy(Long tenancy);
+	
 	@Query(name="Disciplina.findAllByTenancy", nativeQuery=true)
 	List<Item> findAllByTenancy(Long tenancy);
 }

@@ -76,5 +76,5 @@
     })
     
     .factory('cursoResource', function ($resource) {
-    	return $resource('resources/curso/:id');
+    	return $resource('resources/cursos/:id');
     });

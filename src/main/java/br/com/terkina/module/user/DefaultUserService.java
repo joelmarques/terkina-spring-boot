@@ -10,8 +10,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import br.com.terkina.base.utils.Mensagem;
 import br.com.terkina.base.utils.PasswordUtils;
+import br.com.terkina.mail.MessageBuilder;
+import br.com.terkina.mail.SmtpMailSender;
 import br.com.terkina.module.integrante.Integrante;
 import br.com.terkina.module.integrante.IntegranteDao;
 
@@ -20,6 +21,9 @@ public class DefaultUserService implements UserService {
 	
 	@Autowired
 	private IntegranteDao integranteDao;
+	
+	@Autowired
+	private SmtpMailSender smtpMailSender;
 
 	@Override
 	public Long getCurrentTenancy() {
@@ -64,7 +68,7 @@ public class DefaultUserService implements UserService {
 			integrante.setPassword(PasswordUtils.encode(password));			
 			this.integranteDao.save(integrante);
 			
-			Mensagem.criar(email, password).enviar();
+			this.smtpMailSender.send(new MessageBuilder().build(email, email, password));
 			return true;
 		}
 		

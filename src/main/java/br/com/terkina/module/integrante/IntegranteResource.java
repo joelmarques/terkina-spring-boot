@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.terkina.base.model.Item;
-import br.com.terkina.base.utils.Mensagem;
+import br.com.terkina.mail.MessageBuilder;
+import br.com.terkina.mail.SmtpMailSender;
 import br.com.terkina.module.curso.CursoDao;
 import br.com.terkina.module.user.ProfileDao;
 import br.com.terkina.module.user.UserService;
@@ -42,6 +43,9 @@ public class IntegranteResource {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private SmtpMailSender smtpMailSender;
 
 	@GetMapping("all")
 	public Collection<IntegranteVO> findAll() {
@@ -62,8 +66,7 @@ public class IntegranteResource {
 	private void enviarEmailDoLogin(final IntegranteDTO integranteDTO) {
 		
 		if (StringUtils.isNoneBlank(integranteDTO.getEmail(), integranteDTO.getPassword())) {
-			Mensagem.criar(integranteDTO.getNome(), integranteDTO.getEmail(), integranteDTO.getEmail(), integranteDTO.getPassword())
-					.enviar();
+			this.smtpMailSender.send(new MessageBuilder().build(integranteDTO.getNome(), integranteDTO.getEmail(), integranteDTO.getPassword()));
 		}
 	}
 	

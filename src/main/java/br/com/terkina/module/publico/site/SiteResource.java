@@ -15,7 +15,7 @@ import br.com.terkina.module.historico.escolar.IHistoricoEscolar;
 
 @RestController
 @RequestMapping("/publico/sites")
-@CrossOrigin(origins = "http://www.terkina.com.br", maxAge = 3600)
+@CrossOrigin(origins = "http://eepufpa.com.br", maxAge = 3600)
 public class SiteResource {
 	
 	@Autowired	

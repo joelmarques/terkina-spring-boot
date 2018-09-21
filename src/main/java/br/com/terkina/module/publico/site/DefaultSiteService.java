@@ -1,5 +1,6 @@
 package br.com.terkina.module.publico.site;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class DefaultSiteService implements SiteService {
 	}
 
 	private Collection<IAnimal> buscarAnimaisHabilitadosDaEmpresa(Long tenancy) {
-		return this.animalDao.buscarAnimaisHabilitadosDaEmpresa(tenancy);
+		return new ArrayList<IAnimal>(this.animalDao.buscarAnimaisHabilitadosDaEmpresa(tenancy));
 	}
 	
 	@Override

@@ -1,6 +1,7 @@
 package br.com.terkina.module.publico.site;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +15,7 @@ import br.com.terkina.module.historico.escolar.IHistoricoEscolar;
 
 @RestController
 @RequestMapping("/publico/sites")
+@CrossOrigin(origins = "http://www.terkina.com.br", maxAge = 3600)
 public class SiteResource {
 	
 	@Autowired	

@@ -45,7 +45,7 @@ import lombok.Setter;
 	
 	@NamedNativeQuery(name="Animal.findAllByTenancyAndEnable",
 					  query="select a.id as id, a.nome as nome, a.codigo as codigo,"
-					  		+ " a.sexo as sexo, a.url_foto as urlFoto, a.data_nascimento as dataDeNascimento, l.nome as proveniencia"
+					  		+ " a.sexo as sexo, a.url_foto as urlFoto, a.data_nascimento as nascimento, l.nome as origem"
 					  		+ " from animal a"
 					  		+ " left outer join localizacao l on (a.id_origem = l.id)"
 					  		+ " where a.tenancy = ?1"

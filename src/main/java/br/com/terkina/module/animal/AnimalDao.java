@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import br.com.terkina.base.enums.SituacaoEnum;
 import br.com.terkina.base.model.Item;
-import br.com.terkina.module.publico.site.AnimalSiteVO;
+import br.com.terkina.module.publico.site.ISite.IAnimal;
 
 @Repository
 public interface AnimalDao extends JpaRepository<Animal, Long> {
@@ -22,9 +22,9 @@ public interface AnimalDao extends JpaRepository<Animal, Long> {
 	List<Item> buscarAnimaisPorProjeto(Long idProjeto);
 	
 	@Query(name="Animal.findAllByTenancyAndEnable", nativeQuery=true)
-	List<AnimalSiteVO> findAllByTenancyAndEnable(Long tenancy, String situacao);
+	List<IAnimal> findAllByTenancyAndEnable(Long tenancy, String situacao);
 	
-	default public List<AnimalSiteVO> buscarAnimaisHabilitadosDaEmpresa(Long tenancy) {
+	default public List<IAnimal> buscarAnimaisHabilitadosDaEmpresa(Long tenancy) {
 		return this.findAllByTenancyAndEnable(tenancy, SituacaoEnum.HABILITADO.name());
 	}
 }

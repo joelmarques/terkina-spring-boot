@@ -1,8 +1,15 @@
 package br.com.terkina.module.publico.site;
 
 import java.util.Collection;
+import java.util.Date;
+
+import org.apache.commons.lang3.StringUtils;
+
+import br.com.terkina.base.utils.DateUtils;
 
 public interface ISite {
+	
+	public static final String DESCONHECIDA = "desconhecida";
 	
 	IEmpresa getEmpresa();
 	Collection<IPessoa> getOrientadores();	
@@ -34,10 +41,24 @@ public interface ISite {
 		String getCodigo();
 		String getSexo();
 		String getUrlFoto();
-		String getDataDeNascimento();
-		String getIdade();
-		boolean isAniversariante();
-		String getProveniencia();
+		Date getNascimento();
+		String getOrigem();
+		
+		default String getDataDeNascimento() {
+			return StringUtils.defaultIfBlank(DateUtils.formatInFullBrazilianPattern(getNascimento()), DESCONHECIDA);
+		}
+		
+		default String getIdade() {
+			return StringUtils.defaultIfBlank(DateUtils.calculateAgeInFullBrazilianPattern(getNascimento()), DESCONHECIDA);
+		}
+		
+		default boolean isAniversariante() {
+			return DateUtils.isBirthday(getNascimento());
+		}
+		
+		default String getProveniencia() {
+			return StringUtils.defaultIfBlank(getOrigem(), DESCONHECIDA);
+		}
 	}
 
 }

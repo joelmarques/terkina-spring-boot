@@ -28,7 +28,11 @@ public class AnimalSiteVO implements IAnimal {
 	private String idade;
 	private boolean aniversariante;
 	private String proveniencia;
-
+	
+	public void setId(Number id) {
+		this.id = id.longValue();
+	}
+	
 	public void setSexo(String sexo) {
 		if (StringUtils.isNotBlank(sexo)) {
 			this.sexo = SexoEnum.valueOf(sexo).getDescricao();

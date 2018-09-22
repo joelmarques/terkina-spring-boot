@@ -8,11 +8,9 @@ import br.com.terkina.base.model.EntityBase;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name="TIPO_ANIMAL")
-@ToString(of="nome")
 @NoArgsConstructor
 @Getter @Setter
 public class TipoDeAnimal extends EntityBase<Long> {
@@ -28,4 +26,8 @@ public class TipoDeAnimal extends EntityBase<Long> {
 	@Column(name="DESCRICAO", length = 500)
 	private String descricao;
 	
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 }

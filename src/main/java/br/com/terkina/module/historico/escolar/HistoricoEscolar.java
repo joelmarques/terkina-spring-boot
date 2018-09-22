@@ -18,13 +18,16 @@ import lombok.Getter;
 @Getter
 public class HistoricoEscolar implements IHistoricoEscolar {
 	
+	private static final String DESCONHECIDO_A = "desconhecido(a)";
+	
 	private String nome;
-	private String urlFoto;
-	private String idade;
-	private String sexo;
-	private String nascimento;
 	private String codigo;
+	private String sexo;
+	private String urlFoto;
 	private String especie;
+	private String nascimento;
+	private String idade;
+	private boolean aniversariante;
 	private String proveniencia;
 	private Collection<IProjeto> projetos;
 	private Collection<String> videos;
@@ -33,13 +36,14 @@ public class HistoricoEscolar implements IHistoricoEscolar {
 	public HistoricoEscolar(final Animal animal, final Collection<ProjetoPesquisa> projetos) {
 		super();
 		this.nome = animal.getNome();
-		this.urlFoto = animal.getUrlFoto();
-		this.idade = DateUtils.calculateAge(animal.getDataDeNascimento());
-		this.sexo = Objects.toString(animal.getSexo(), StringUtils.EMPTY);
-		this.nascimento = DateUtils.format(animal.getDataDeNascimento());
 		this.codigo = animal.getCodigo();
-		this.especie = Objects.toString(animal.getTipoDeAnimal(), StringUtils.EMPTY);
-		this.proveniencia = Objects.toString(animal.getOrigem(), StringUtils.EMPTY);
+		this.sexo = Objects.toString(animal.getSexo(), DESCONHECIDO_A);
+		this.urlFoto = animal.getUrlFoto();
+		this.especie = Objects.toString(animal.getTipoDeAnimal(), DESCONHECIDO_A);
+		this.nascimento = DateUtils.format(animal.getDataDeNascimento());
+		this.idade = StringUtils.defaultIfBlank(DateUtils.calculateAge(animal.getDataDeNascimento()), DESCONHECIDO_A);
+		this.aniversariante = DateUtils.isBirthday(animal.getDataDeNascimento());
+		this.proveniencia = Objects.toString(animal.getOrigem(), DESCONHECIDO_A);
 		this.projetos = this.converterProjetos(projetos);
 		this.videos = this.converterVideos(animal.getArquivos());
 		this.imagens = this.converterImagens(animal.getArquivos());

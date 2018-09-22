@@ -31,8 +31,21 @@ public enum SexoEnum {
 		return null;
 	}
 	
+	public static String getAsString(String name) {
+		
+		for (SexoEnum sexo : SexoEnum.values()) {
+			if (sexo.name().equalsIgnoreCase(name)) {
+				return sexo.getDescricao();
+			}
+		}
+		
+		return null;
+	}
+	
 	@Override
 	public String toString() {
 		return this.getDescricao();
 	}
+	
+	
 }

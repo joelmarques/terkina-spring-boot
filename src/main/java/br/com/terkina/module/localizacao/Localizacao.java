@@ -2,15 +2,15 @@ package br.com.terkina.module.localizacao;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 import br.com.terkina.base.model.EntityBase;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@ToString(of="nome")
+@Table(name="LOCALIZACAO")
 @NoArgsConstructor
 @Getter @Setter
 public class Localizacao extends EntityBase<Long> {
@@ -25,5 +25,10 @@ public class Localizacao extends EntityBase<Long> {
 
 	@Column(name="DESCRICAO", length = 500)
 	private String descricao;
+	
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 
 }

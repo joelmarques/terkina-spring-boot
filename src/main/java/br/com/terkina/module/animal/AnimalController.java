@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.terkina.base.entity.Item;
-import br.com.terkina.base.enums.SituacaoEnum;
 import br.com.terkina.module.arquivo.TipoArquivoEnum;
 import br.com.terkina.module.localizacao.LocalizacaoDao;
 import br.com.terkina.module.tipoanimal.TipoDeAnimalDao;
@@ -21,10 +20,10 @@ import br.com.terkina.module.user.UserService;
 
 @RestController
 @RequestMapping("/resources/animais")
-public class AnimalResource {
+public class AnimalController {
 
 	@Autowired
-	private AnimalDao animalDao;
+	private AnimalRepository animalRepository;
 	
 	@Autowired
 	private TipoDeAnimalDao tipoDeAnimalDao;
@@ -46,22 +45,22 @@ public class AnimalResource {
 	
 	@GetMapping("all")
 	public Collection<AnimalVO> findAll() {		
-		return this.animalVOConverter.convert(this.animalDao.findByTenancy(this.userService.getCurrentTenancy()));
+		return this.animalVOConverter.convert(this.animalRepository.findByTenancy(this.userService.getCurrentTenancy()));
 	}
 	
 	@GetMapping("/{id}")
 	public AnimalDTO findByID(@PathVariable("id") Long id) {		
-		return this.converter.convert(this.animalDao.getOne(id));
+		return this.converter.convert(this.animalRepository.getOne(id));
 	}
 	
 	@PostMapping
 	public void save(@RequestBody AnimalDTO source) {
-		this.animalDao.save(this.reverse.revert(source));
+		this.animalRepository.save(this.reverse.revert(source));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		this.animalDao.deleteById(id);
+		this.animalRepository.deleteById(id);
 	}
 	
 	@GetMapping("especies")

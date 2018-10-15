@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.terkina.base.entity.Item;
-import br.com.terkina.module.animal.AnimalDao;
+import br.com.terkina.module.animal.AnimalRepository;
 import br.com.terkina.module.integrante.IntegranteDao;
 import br.com.terkina.module.tipopesquisa.TipoDePesquisaDao;
 import br.com.terkina.module.user.UserService;
@@ -31,7 +31,7 @@ public class ProjetoPesquisaResource {
 	private TipoDePesquisaDao tipoDePesquisaDao;
 	
 	@Autowired
-	private AnimalDao animalDao;
+	private AnimalRepository animalRepository;
 	
 	@Autowired
 	private ProjetoPesquisaDTOConverter converter;
@@ -79,6 +79,6 @@ public class ProjetoPesquisaResource {
 	
 	@GetMapping("animais")
 	public Collection<Item> getAnimais() {
-		return this.animalDao.findAllByTenancy(this.userService.getCurrentTenancy());
+		return this.animalRepository.findAllByTenancy(this.userService.getCurrentTenancy());
 	}
 }

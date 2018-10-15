@@ -20,7 +20,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import br.com.terkina.base.entity.AbstractEntity;
-import br.com.terkina.base.enums.SituacaoEnum;
 import br.com.terkina.module.arquivo.Arquivo;
 import br.com.terkina.module.localizacao.Localizacao;
 import br.com.terkina.module.tipoanimal.TipoDeAnimal;
@@ -43,7 +42,7 @@ import lombok.Setter;
 					  		+ " where a.id in"
 					  		+ " (select pa.id_animal from projeto_animal pa where pa.id_projeto = ?1)"),
 	
-	@NamedNativeQuery(name="Animal.findAllByTenancyAndEnable",
+	@NamedNativeQuery(name="Animal.findAllByTenancyAndEnabled",
 					  query="select a.id as id, a.nome as nome, a.codigo as codigo,"
 					  		+ " a.sexo as sexagem, a.url_foto as urlFoto, a.data_nascimento as nascimento, l.nome as origem"
 					  		+ " from animal a"

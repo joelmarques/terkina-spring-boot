@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import br.com.terkina.base.entity.Item;
-import br.com.terkina.base.enums.SituacaoEnum;
 import br.com.terkina.module.arquivo.ArquivoDTO;
 import lombok.Getter;
 import lombok.Setter;

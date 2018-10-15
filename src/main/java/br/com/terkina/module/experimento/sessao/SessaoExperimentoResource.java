@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.terkina.base.entity.Item;
-import br.com.terkina.module.animal.AnimalDao;
+import br.com.terkina.module.animal.AnimalRepository;
 import br.com.terkina.module.arquivo.TipoArquivoEnum;
 import br.com.terkina.module.disciplina.DisciplinaDao;
 import br.com.terkina.module.integrante.IntegranteDao;
@@ -30,7 +30,7 @@ public class SessaoExperimentoResource {
 	private IntegranteDao integranteDao;
 	
 	@Autowired
-	private AnimalDao animalDao;
+	private AnimalRepository animalRepository;
 	
 	@Autowired
 	private DisciplinaDao disciplinaDao;
@@ -76,7 +76,7 @@ public class SessaoExperimentoResource {
 	
 	@GetMapping("animais")
 	public Collection<Item> getAnimais(@RequestParam("idProjeto") Long idProjeto) {
-		return this.animalDao.buscarAnimaisPorProjeto(idProjeto);
+		return this.animalRepository.findAllByProject(idProjeto);
 	}
 	
 	@GetMapping("tiposArquivos")

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.terkina.mail.MessageBuilder;
-import br.com.terkina.mail.SmtpMailSender;
+import br.com.terkina.base.mail.MessageBuilder;
+import br.com.terkina.base.mail.SmtpMailSender;
 import br.com.terkina.module.historico.escolar.IHistoricoEscolar;
 
 @RestController

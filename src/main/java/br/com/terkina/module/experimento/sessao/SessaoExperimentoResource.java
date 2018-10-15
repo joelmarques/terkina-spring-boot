@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.module.animal.AnimalDao;
 import br.com.terkina.module.arquivo.TipoArquivoEnum;
 import br.com.terkina.module.disciplina.DisciplinaDao;

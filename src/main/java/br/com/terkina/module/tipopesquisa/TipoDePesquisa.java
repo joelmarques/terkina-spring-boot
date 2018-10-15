@@ -6,7 +6,7 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -22,7 +22,7 @@ import lombok.ToString;
 					  		+ " from tipo_pesquisa t"
 					  		+ " where t.tenancy = ?1")
 })
-public class TipoDePesquisa extends EntityBase<Long> {
+public class TipoDePesquisa extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -8176892630074913302L;
 

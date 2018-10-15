@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.terkina.base.model.Item;
-import br.com.terkina.mail.MessageBuilder;
-import br.com.terkina.mail.SmtpMailSender;
+import br.com.terkina.base.entity.Item;
+import br.com.terkina.base.mail.MessageBuilder;
+import br.com.terkina.base.mail.SmtpMailSender;
 import br.com.terkina.module.curso.CursoDao;
 import br.com.terkina.module.user.ProfileDao;
 import br.com.terkina.module.user.UserService;

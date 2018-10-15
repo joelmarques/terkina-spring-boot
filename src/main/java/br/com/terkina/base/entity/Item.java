@@ -1,4 +1,4 @@
-package br.com.terkina.base.model;
+package br.com.terkina.base.entity;
 
 import java.util.Collection;
 import java.util.stream.Collectors;

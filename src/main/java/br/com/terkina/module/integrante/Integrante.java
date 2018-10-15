@@ -11,7 +11,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.module.curso.Curso;
 import br.com.terkina.module.user.Profile;
 import lombok.Getter;
@@ -56,7 +56,7 @@ import lombok.Setter;
 	  				  query="select max(i.tenancy) from integrante i"),
 	
 })
-public class Integrante extends EntityBase<Long> {
+public class Integrante extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -4474286405999680839L;
 	

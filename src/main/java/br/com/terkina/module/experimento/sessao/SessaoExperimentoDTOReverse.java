@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Reverse;
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.animal.AnimalDao;
 import br.com.terkina.module.arquivo.Arquivo;

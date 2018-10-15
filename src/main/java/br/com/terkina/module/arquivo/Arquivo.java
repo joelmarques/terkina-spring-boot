@@ -7,7 +7,7 @@ import javax.persistence.Enumerated;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Entity
 @NoArgsConstructor
 @Getter @Setter
-public class Arquivo extends EntityBase<Long> {
+public class Arquivo extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = 6469832222335449257L;
 	

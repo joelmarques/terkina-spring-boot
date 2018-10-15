@@ -1,4 +1,4 @@
-package br.com.terkina.base.model;
+package br.com.terkina.base.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,7 +16,6 @@ import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import br.com.terkina.base.listener.AbstractEntityListener;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,7 +23,7 @@ import lombok.Setter;
 @MappedSuperclass
 @EntityListeners(value = {AuditingEntityListener.class, AbstractEntityListener.class})
 @EqualsAndHashCode(of = "id")
-public abstract class EntityBase<PK> implements Serializable {
+public abstract class AbstractEntity<PK> implements Serializable {
 
 	@Id
 	@Column(name="ID")

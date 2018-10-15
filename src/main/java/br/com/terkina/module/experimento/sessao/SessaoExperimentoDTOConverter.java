@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.module.animal.AnimalDTOConverter;
 import br.com.terkina.module.arquivo.ArquivoDTOConverter;
 import br.com.terkina.module.disciplina.Disciplina;

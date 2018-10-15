@@ -1,4 +1,4 @@
-package br.com.terkina.base.model;
+package br.com.terkina.base.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

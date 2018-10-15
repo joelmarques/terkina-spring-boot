@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.module.arquivo.ArquivoDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

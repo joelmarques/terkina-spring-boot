@@ -19,8 +19,8 @@ import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.base.enums.SituacaoEnum;
-import br.com.terkina.base.model.EntityBase;
 import br.com.terkina.module.arquivo.Arquivo;
 import br.com.terkina.module.localizacao.Localizacao;
 import br.com.terkina.module.tipoanimal.TipoDeAnimal;
@@ -52,7 +52,7 @@ import lombok.Setter;
 					  		+ " and a.situacao = ?2"
 					  		+ " order by a.nome")
 })
-public class Animal extends EntityBase<Long> {
+public class Animal extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = 9139783455041858497L;
 

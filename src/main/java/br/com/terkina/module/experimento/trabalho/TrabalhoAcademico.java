@@ -11,7 +11,7 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Table;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.module.experimento.projeto.ProjetoPesquisa;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,7 @@ import lombok.Setter;
 			  		  		+ " where t.id_projeto = ?1")
 	
 })
-public class TrabalhoAcademico extends EntityBase<Long> {
+public class TrabalhoAcademico extends AbstractEntity<Long> {
 	
 	private static final long serialVersionUID = 3193641982372633466L;
 

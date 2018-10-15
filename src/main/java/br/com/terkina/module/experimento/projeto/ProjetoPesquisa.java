@@ -18,7 +18,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.experimento.sessao.SessaoExperimento;
 import br.com.terkina.module.experimento.trabalho.TrabalhoAcademico;
@@ -43,7 +43,7 @@ import lombok.Setter;
 	@NamedQuery(name="ProjetoPesquisa.findAllByAnimal",
 			  		  query="select p from ProjetoPesquisa p where :animal member of p.animais")	
 })
-public class ProjetoPesquisa extends EntityBase<Long> {
+public class ProjetoPesquisa extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -8303243828412559887L;
 

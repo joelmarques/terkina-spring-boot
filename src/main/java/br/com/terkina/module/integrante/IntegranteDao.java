@@ -6,8 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import br.com.terkina.base.enums.SituacaoEnum;
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.module.publico.site.ISite.IPessoa;
 import br.com.terkina.module.user.ProfileType;
 
@@ -42,11 +41,11 @@ public interface IntegranteDao extends JpaRepository<Integrante, Long> {
 	}
 
 	default public List<IPessoa> buscarOrientadoresHabilitadosDaEmpresa(Long tenancy) {
-		return this.findAllByProfileAndTenancyAndEnable(ProfileType.ORIENTADOR.name(), tenancy, SituacaoEnum.HABILITADO.getValor());
+		return this.findAllByProfileAndTenancyAndEnable(ProfileType.ORIENTADOR.name(), tenancy, true);
 	}
 	
 	default public List<IPessoa> buscarPesquisadoresHabilitadosDaEmpresa(Long tenancy) {
-		return this.findAllByProfileAndTenancyAndEnable(ProfileType.PESQUISADOR.name(), tenancy, SituacaoEnum.HABILITADO.getValor());
+		return this.findAllByProfileAndTenancyAndEnable(ProfileType.PESQUISADOR.name(), tenancy, true);
 	}
 
 }

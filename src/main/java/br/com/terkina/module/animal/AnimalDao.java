@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.base.enums.SituacaoEnum;
-import br.com.terkina.base.model.Item;
 import br.com.terkina.module.publico.site.ISite.IAnimal;
 
 @Repository

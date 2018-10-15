@@ -3,7 +3,7 @@ package br.com.terkina.module.instituicao;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import lombok.ToString;
 @Entity
 @ToString(of="nome")
 @NoArgsConstructor
-public class Instituicao extends EntityBase<Long> {
+public class Instituicao extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = 2175678654852054488L;
 

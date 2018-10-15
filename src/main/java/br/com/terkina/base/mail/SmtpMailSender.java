@@ -1,4 +1,4 @@
-package br.com.terkina.mail;
+package br.com.terkina.base.mail;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

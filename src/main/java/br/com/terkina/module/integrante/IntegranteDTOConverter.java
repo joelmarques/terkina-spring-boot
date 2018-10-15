@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Converter;
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.module.curso.Curso;
 import br.com.terkina.module.user.Profile;
 

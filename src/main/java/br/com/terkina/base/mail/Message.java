@@ -1,4 +1,4 @@
-package br.com.terkina.mail;
+package br.com.terkina.base.mail;
 
 public interface Message {
 	

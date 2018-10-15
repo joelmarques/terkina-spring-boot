@@ -13,7 +13,7 @@ import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.module.arquivo.Arquivo;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +33,7 @@ import lombok.Setter;
 					  		+ " e.tenancy as tenancy"
 					  		+ " from empresa e where e.identificador = ?1")
 })
-public class Empresa extends EntityBase<Long> {
+public class Empresa extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -8799122525545330960L;
 	

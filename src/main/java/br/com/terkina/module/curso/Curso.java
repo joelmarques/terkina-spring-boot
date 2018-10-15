@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 
 import org.apache.commons.lang3.StringUtils;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.module.instituicao.Instituicao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ import lombok.ToString;
 @ToString(of="nome")
 @NoArgsConstructor
 @Getter @Setter
-public class Curso extends EntityBase<Long> {
+public class Curso extends AbstractEntity<Long> {
 	
 	private static final long serialVersionUID = -6605341158982266054L;
 

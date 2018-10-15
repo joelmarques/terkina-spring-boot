@@ -3,7 +3,7 @@ package br.com.terkina.module.experimento.projeto;
 import java.util.Collection;
 import java.util.Date;
 
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

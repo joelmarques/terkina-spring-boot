@@ -2,7 +2,7 @@ package br.com.terkina.module.integrante;
 
 import java.util.Collection;
 
-import br.com.terkina.base.model.Item;
+import br.com.terkina.base.entity.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

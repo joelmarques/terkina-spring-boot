@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.terkina.base.entity.Item;
 import br.com.terkina.base.enums.SituacaoEnum;
-import br.com.terkina.base.model.Item;
 import br.com.terkina.module.arquivo.TipoArquivoEnum;
 import br.com.terkina.module.localizacao.LocalizacaoDao;
 import br.com.terkina.module.tipoanimal.TipoDeAnimalDao;

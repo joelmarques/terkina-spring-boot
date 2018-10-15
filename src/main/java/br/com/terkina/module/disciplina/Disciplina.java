@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,7 +19,7 @@ import lombok.Setter;
 					  		+ " from disciplina d"
 					  		+ " where d.tenancy = ?1")
 })
-public class Disciplina extends EntityBase<Long> {
+public class Disciplina extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -8799122525545330960L;
 

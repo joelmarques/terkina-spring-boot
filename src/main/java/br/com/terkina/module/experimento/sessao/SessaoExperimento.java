@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.arquivo.Arquivo;
 import br.com.terkina.module.disciplina.Disciplina;
@@ -38,7 +38,7 @@ import lombok.Setter;
 			  		  		+ " left outer join disciplina disciplina on (sessao.id_disciplina = disciplina.id)"
 			  		  		+ " where sessao.id_projeto = ?1")	
 })
-public class SessaoExperimento extends EntityBase<Long> {
+public class SessaoExperimento extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -1161371549047517702L;
 	

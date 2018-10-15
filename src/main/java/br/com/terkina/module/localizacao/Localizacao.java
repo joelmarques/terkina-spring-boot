@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import br.com.terkina.base.model.EntityBase;
+import br.com.terkina.base.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import lombok.Setter;
 @Table(name="LOCALIZACAO")
 @NoArgsConstructor
 @Getter @Setter
-public class Localizacao extends EntityBase<Long> {
+public class Localizacao extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -1907761100298890544L;
 

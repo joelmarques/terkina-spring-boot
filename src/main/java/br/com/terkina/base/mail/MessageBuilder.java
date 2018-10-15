@@ -1,4 +1,4 @@
-package br.com.terkina.mail;
+package br.com.terkina.base.mail;
 
 import br.com.terkina.module.publico.site.Visitante;
 import lombok.Getter;

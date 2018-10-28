@@ -1,7 +1,6 @@
 package br.com.terkina.module.animal;
 
 import java.util.Collection;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,14 +37,11 @@ public class AnimalController {
 	private AnimalDTOReverse reverse;
 	
 	@Autowired
-	private AnimalVOConverter animalVOConverter;
-	
-	@Autowired
 	private UserService userService;
 	
 	@GetMapping("all")
-	public Collection<AnimalVO> findAll() {		
-		return this.animalVOConverter.convert(this.animalRepository.findByTenancy(this.userService.getCurrentTenancy()));
+	public Collection<IAnimal> findAll() {		
+		return this.animalRepository.buscarAnimaisPorTenancia(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("/{id}")
@@ -64,12 +60,12 @@ public class AnimalController {
 	}
 	
 	@GetMapping("especies")
-	public List<Item> getEspecies() {		
+	public Collection<Item> getEspecies() {		
 		return this.tipoDeAnimalDao.getItems(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("localizacoes")
-	public List<Item> getLocalizacoes() {		
+	public Collection<Item> getLocalizacoes() {		
 		return this.localizacaoDao.getItems(this.userService.getCurrentTenancy());
 	}
 	

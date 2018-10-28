@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import br.com.terkina.module.animal.Animal;
 import br.com.terkina.module.animal.AnimalRepository;
+import br.com.terkina.module.animal.IAnimal;
 import br.com.terkina.module.empresa.EmpresaDao;
 import br.com.terkina.module.experimento.projeto.ProjetoPesquisa;
 import br.com.terkina.module.experimento.projeto.ProjetoPesquisaDao;
 import br.com.terkina.module.historico.escolar.HistoricoEscolar;
 import br.com.terkina.module.historico.escolar.IHistoricoEscolar;
 import br.com.terkina.module.integrante.IntegranteDao;
-import br.com.terkina.module.publico.site.ISite.IAnimal;
 import br.com.terkina.module.publico.site.ISite.IEmpresa;
 import br.com.terkina.module.publico.site.ISite.IPessoa;
 

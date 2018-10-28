@@ -42,6 +42,17 @@ public enum SexoEnum {
 		return null;
 	}
 	
+	public static String getAsLowerCase(String name) {
+		
+		for (SexoEnum sexo : SexoEnum.values()) {
+			if (sexo.name().equalsIgnoreCase(name)) {
+				return sexo.getDescricao().toLowerCase();
+			}
+		}
+		
+		return null;
+	}
+	
 	@Override
 	public String toString() {
 		return this.getDescricao();

@@ -79,6 +79,6 @@ public class ProjetoPesquisaResource {
 	
 	@GetMapping("animais")
 	public Collection<Item> getAnimais() {
-		return this.animalRepository.findAllByTenancy(this.userService.getCurrentTenancy());
+		return this.animalRepository.buscarItensPorTenancia(this.userService.getCurrentTenancy());
 	}
 }

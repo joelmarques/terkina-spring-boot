@@ -21,11 +21,11 @@
       		<a ng-href="#/animais/edit/{{animal.id}}"><i class="icon-pencil"></i>{{animal.nome}}</a>
       	</td>
         <td>{{animal.codigo}}</td>
-        <td>{{animal.sexo}}</td>
-        <td>{{animal.especie}}</td>
-        <td>{{animal.proveniencia}}</td>
-        <td>{{animal.dataDeNascimento}}</td>
-        <td>{{animal.situacao}}</td>
+        <td>{{animal.sexoFormatado}}</td>
+        <td>{{animal.especieFormatada}}</td>
+        <td>{{animal.provenienciaFormatada}}</td>
+        <td>{{animal.dataDeNascimentoFormatada}}</td>
+        <td>{{animal.situacaoFormatada}}</td>
         <td style="text-align: right;">
         	<a ng-href="#animais/{{animal.id}}/{{animal.nome}}/fichaClinica">Ficha Clínica</a>
         </td>

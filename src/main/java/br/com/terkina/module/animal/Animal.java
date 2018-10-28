@@ -31,24 +31,36 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 @NamedNativeQueries({
-	@NamedNativeQuery(name="Animal.findAllByTenancy",
+	@NamedNativeQuery(name="Animal.buscarItensPorTenancia",
 					  query="select a.id as id, a.nome as descricao"
 					  		+ " from animal a"
 					  		+ " where a.tenancy = ?1"),
 	
-	@NamedNativeQuery(name="Animal.findAllByProject",
+	@NamedNativeQuery(name="Animal.buscarItensPorProjeto",
 					  query="select a.id as id, a.nome as descricao"
 					  		+ " from animal a"
 					  		+ " where a.id in"
 					  		+ " (select pa.id_animal from projeto_animal pa where pa.id_projeto = ?1)"),
 	
-	@NamedNativeQuery(name="Animal.findAllByTenancyAndEnabled",
-					  query="select a.id as id, a.nome as nome, a.codigo as codigo,"
-					  		+ " a.sexo as sexagem, a.url_foto as urlFoto, a.data_nascimento as nascimento, l.nome as origem"
+	@NamedNativeQuery(name="Animal.buscarAnimaisPorTenanciaESituacao",
+					  query="select a.id as id, a.codigo as codigo, a.nome as nome,"
+					  		+ " a.sexo as sexo, a.data_nascimento as dataDeNascimento, a.url_foto as urlFoto,"
+					  		+ " l.nome as proveniencia, t.nome as especie, a.situacao as situacao"
 					  		+ " from animal a"
 					  		+ " left outer join localizacao l on (a.id_origem = l.id)"
+					  		+ " left outer join tipo_animal t on (a.id_tipo_animal = t.id)"
 					  		+ " where a.tenancy = ?1"
 					  		+ " and a.situacao = ?2"
+					  		+ " order by a.nome"),
+	
+	@NamedNativeQuery(name="Animal.buscarAnimaisPorTenancia",
+					  query="select a.id as id, a.codigo as codigo, a.nome as nome,"
+					  		+ " a.sexo as sexo, a.data_nascimento as dataDeNascimento, a.url_foto as urlFoto,"
+					  		+ " l.nome as proveniencia, t.nome as especie, a.situacao as situacao"
+					  		+ " from animal a"
+					  		+ " left outer join localizacao l on (a.id_origem = l.id)"
+					  		+ " left outer join tipo_animal t on (a.id_tipo_animal = t.id)"
+					  		+ " where a.tenancy = ?1"
 					  		+ " order by a.nome")
 })
 public class Animal extends AbstractEntity<Long> {

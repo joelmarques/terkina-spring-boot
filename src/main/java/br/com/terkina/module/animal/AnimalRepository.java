@@ -7,23 +7,25 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import br.com.terkina.base.entity.Item;
-import br.com.terkina.module.publico.site.ISite.IAnimal;
 
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
 	
 	List<Animal> findByTenancy(Long tenancy);
 	
-	@Query(name="Animal.findAllByTenancy", nativeQuery=true)
-	List<Item> findAllByTenancy(Long tenancy);
+	@Query(name="Animal.buscarItensPorTenancia", nativeQuery=true)
+	List<Item> buscarItensPorTenancia(Long tenancy);
 	
-	@Query(name="Animal.findAllByProject", nativeQuery=true)
-	List<Item> findAllByProject(Long projectId);
+	@Query(name="Animal.buscarItensPorProjeto", nativeQuery=true)
+	List<Item> buscarItensPorProjeto(Long idProjeto);
 	
-	@Query(name="Animal.findAllByTenancyAndEnabled", nativeQuery=true)
-	List<IAnimal> findAllByTenancyAndEnabled(Long tenancy, String situacao);
+	@Query(name="Animal.buscarAnimaisPorTenancia", nativeQuery=true)
+	List<IAnimal> buscarAnimaisPorTenancia(Long tenancy);
+	
+	@Query(name="Animal.buscarAnimaisPorTenanciaESituacao", nativeQuery=true)
+	List<IAnimal> buscarAnimaisPorTenanciaESituacao(Long tenancy, String situacao);
 	
 	default public List<IAnimal> buscarAnimaisHabilitadosDaEmpresa(Long tenancy) {
-		return this.findAllByTenancyAndEnabled(tenancy, SituacaoEnum.HABILITADO.name());
+		return this.buscarAnimaisPorTenanciaESituacao(tenancy, SituacaoEnum.HABILITADO.name());
 	}
 }

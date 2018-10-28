@@ -30,5 +30,16 @@ public enum SituacaoEnum {
 		
 		return null;
 	}
+	
+	public static String getAsString(String name) {
+		
+		for (SituacaoEnum situacao : SituacaoEnum.values()) {
+			if (situacao.name().equalsIgnoreCase(name)) {
+				return situacao.getDescricao();
+			}
+		}
+		
+		return null;
+	}
 
 }

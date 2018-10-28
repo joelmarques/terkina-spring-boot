@@ -2,6 +2,7 @@ package br.com.terkina.module.publico.site;
 
 import java.util.Collection;
 
+import br.com.terkina.module.animal.IAnimal;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

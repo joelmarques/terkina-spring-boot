@@ -76,7 +76,7 @@ public class SessaoExperimentoResource {
 	
 	@GetMapping("animais")
 	public Collection<Item> getAnimais(@RequestParam("idProjeto") Long idProjeto) {
-		return this.animalRepository.findAllByProject(idProjeto);
+		return this.animalRepository.buscarItensPorProjeto(idProjeto);
 	}
 	
 	@GetMapping("tiposArquivos")

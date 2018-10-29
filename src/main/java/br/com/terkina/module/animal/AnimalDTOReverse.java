@@ -16,6 +16,7 @@ import br.com.terkina.module.localizacao.Localizacao;
 import br.com.terkina.module.localizacao.LocalizacaoDao;
 import br.com.terkina.module.tipoanimal.TipoDeAnimal;
 import br.com.terkina.module.tipoanimal.TipoDeAnimalDao;
+import br.com.terkina.module.user.UserService;
 
 @Component
 public class AnimalDTOReverse implements Reverse<AnimalDTO, Animal> {
@@ -31,6 +32,9 @@ public class AnimalDTOReverse implements Reverse<AnimalDTO, Animal> {
 	
 	@Autowired
 	private ArquivoDTOReverse arquivoDTOReverse;
+	
+	@Autowired
+	private UserService userService;
 	
 	@Override
 	public Animal revert(AnimalDTO source) {
@@ -50,9 +54,23 @@ public class AnimalDTOReverse implements Reverse<AnimalDTO, Animal> {
 		target.setDescricao(source.getDescricao());
 		target.setUrlFoto(source.getUrlFoto());
 		target.setArquivos(this.reverterArquivos(source.getArquivos()));
+		this.definirTenancy(target);
 		return target;
 	}
 	
+	private void definirTenancy(Animal animal) {
+		
+		Long tenancy = this.userService.getCurrentTenancy();
+		
+		animal.setTenancy(tenancy);
+		
+		if (animal.getArquivos() != null) {
+			for (Arquivo  arquivo : animal.getArquivos()) {
+				arquivo.setTenancy(tenancy);
+			}
+		}
+	}
+
 	private Animal getAnimal(final Long id) {		
 		return id == null ? new Animal() : this.animalRepository.getOne(id);
 	}

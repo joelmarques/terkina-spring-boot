@@ -20,6 +20,7 @@ import br.com.terkina.module.experimento.projeto.ProjetoPesquisa;
 import br.com.terkina.module.experimento.projeto.ProjetoPesquisaDao;
 import br.com.terkina.module.integrante.Integrante;
 import br.com.terkina.module.integrante.IntegranteDao;
+import br.com.terkina.module.user.UserService;
 
 @Component
 public class SessaoExperimentoDTOReverse implements Reverse<SessaoExperimentoDTO, SessaoExperimento> {
@@ -41,6 +42,9 @@ public class SessaoExperimentoDTOReverse implements Reverse<SessaoExperimentoDTO
 	
 	@Autowired
 	private ArquivoDTOReverse arquivoDTOReverse;
+	
+	@Autowired
+	private UserService userService;
 
 	@Override
 	public SessaoExperimento revert(SessaoExperimentoDTO source) {
@@ -53,7 +57,21 @@ public class SessaoExperimentoDTOReverse implements Reverse<SessaoExperimentoDTO
 		target.setPesquisadores(this.reverterPesquisadores(source.getPesquisadores()));
 		target.setAnimais(this.reverterAnimais(source.getAnimais()));
 		target.setArquivos(this.reverterArquivos(source.getArquivos()));
+		this.definirTenancy(target);
 		return target;
+	}
+	
+	private void definirTenancy(SessaoExperimento sessaoExperimento) {
+		
+		Long tenancy = this.userService.getCurrentTenancy();
+		
+		sessaoExperimento.setTenancy(tenancy);
+		
+		if (sessaoExperimento.getArquivos() != null) {
+			for (Arquivo  arquivo : sessaoExperimento.getArquivos()) {
+				arquivo.setTenancy(tenancy);
+			}
+		}
 	}
 	
 	private SessaoExperimento getSessaoExperimento(final Long id) {

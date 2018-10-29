@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.terkina.base.converter.Reverse;
-import br.com.terkina.module.user.UserService;
 
 @Component
 public class ArquivoDTOReverse implements Reverse<Collection<ArquivoDTO>, Set<Arquivo>> {
@@ -16,22 +15,16 @@ public class ArquivoDTOReverse implements Reverse<Collection<ArquivoDTO>, Set<Ar
 	@Autowired
 	private ArquivoDao arquivoDao;
 	
-	@Autowired
-	private UserService userService;
-	
 	@Override
 	public Set<Arquivo> revert(Collection<ArquivoDTO> source) {
 		
 		final Set<Arquivo> target = new HashSet<Arquivo>();
-		
-		final Long tenancy = this.userService.getCurrentTenancy();
 		
 		for (ArquivoDTO arquivoDTO : source) {
 			Arquivo arquivo = this.getArquivo(arquivoDTO.getId());
 			arquivo.setDescricao(arquivoDTO.getDescricao());
 			arquivo.setUrlArquivo(arquivoDTO.getUrlArquivo());
 			arquivo.setTipo(arquivoDTO.getTipo());
-			arquivo.setTenancy(tenancy);
 			target.add(arquivo);
 		}
 		

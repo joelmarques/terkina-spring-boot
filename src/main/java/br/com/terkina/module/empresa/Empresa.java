@@ -1,5 +1,6 @@
 package br.com.terkina.module.empresa;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -78,5 +79,12 @@ public class Empresa extends AbstractEntity<Long> {
         joinColumns = @JoinColumn(name = "ID_EMPRESA", referencedColumnName = "id"), 
         inverseJoinColumns = @JoinColumn(name = "ID_ARQUIVO", referencedColumnName = "id"))
 	@OrderBy("tipo")
-	private Set<Arquivo> arquivos;
+	private Set<Arquivo> arquivos = new HashSet<Arquivo>();
+
+	public void setArquivos(Set<Arquivo> arquivos) {
+		this.arquivos.clear();
+		if (arquivos != null) {
+			this.arquivos.addAll(arquivos);
+		}
+	}
 }

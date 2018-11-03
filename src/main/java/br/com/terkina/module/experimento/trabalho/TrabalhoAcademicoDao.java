@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository 
 public interface TrabalhoAcademicoDao extends JpaRepository<TrabalhoAcademico, Long> {
 	
-	@Query(name="TrabalhoAcademico.findByProject", nativeQuery=true)
+	@Query(name="TrabalhoAcademico.buscarTrabalhosAcademicosPorProjeto", nativeQuery=true)
 	List<TrabalhoAcademicoVO> buscarTrabalhosAcademicosPorProjeto(Long idProjeto);
 }

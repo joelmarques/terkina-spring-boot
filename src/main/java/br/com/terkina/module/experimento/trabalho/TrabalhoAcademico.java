@@ -22,9 +22,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter @Setter
 @NamedNativeQueries({
-	@NamedNativeQuery(name="TrabalhoAcademico.findByProject",
-			  		  query="select t.id as id, t.tipo_trabalho as tipoTrabalho, t.titulo as titulo,"
-			  		  		+ " t.autores as autores, t.url_arquivo as urlArquivo"
+	@NamedNativeQuery(name="TrabalhoAcademico.buscarTrabalhosAcademicosPorProjeto",
+			  		  query="select t.id as id, t.titulo as titulo, t.autores as autores,"
+			  		  		+ " t.evento as evento, t.url_arquivo as urlArquivo"
 			  		  		+ " from trabalho_academico t"
 			  		  		+ " where t.id_projeto = ?1")
 	

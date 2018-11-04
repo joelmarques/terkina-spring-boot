@@ -66,7 +66,7 @@ public class SessaoExperimentoResource {
 	
 	@GetMapping("disciplinas")
 	public Collection<Item> getDisciplinas() {
-		return this.disciplinaDao.findAllByTenancy(this.userService.getCurrentTenancy());
+		return this.disciplinaDao.buscarItensPorTenancia(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("pesquisadores")

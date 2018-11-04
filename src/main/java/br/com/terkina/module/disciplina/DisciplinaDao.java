@@ -13,6 +13,6 @@ public interface DisciplinaDao extends JpaRepository<Disciplina, Long> {
 	
 	List<Disciplina> findByTenancy(Long tenancy);
 	
-	@Query(name="Disciplina.findAllByTenancy", nativeQuery=true)
-	List<Item> findAllByTenancy(Long tenancy);
+	@Query(value = "SELECT id AS id, nome AS descricao FROM disciplina WHERE tenancy = ?1", nativeQuery = true)
+	List<Item> buscarItensPorTenancia(Long tenancy);
 }

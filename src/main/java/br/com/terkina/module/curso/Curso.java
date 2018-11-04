@@ -12,10 +12,8 @@ import br.com.terkina.module.instituicao.Instituicao;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@ToString(of="nome")
 @NoArgsConstructor
 @Getter @Setter
 public class Curso extends AbstractEntity<Long> {
@@ -42,5 +40,10 @@ public class Curso extends AbstractEntity<Long> {
 		}
 		
 		return descricao.toString();		
+	}
+	
+	@Override
+	public String toString() {
+		return this.getNome();
 	}
 }

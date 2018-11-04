@@ -13,6 +13,6 @@ public interface TipoDePesquisaDao extends JpaRepository<TipoDePesquisa, Long> {
 	
 	List<TipoDePesquisa> findByTenancy(Long tenancy);
 	
-	@Query(name="TipoDePesquisa.findAllByTenancy", nativeQuery=true)
-	List<Item> findAllByTenancy(Long tenancy);
+	@Query(value = "SELECT id AS id, nome AS descricao FROM tipo_pesquisa WHERE tenancy = ?1", nativeQuery = true)
+	List<Item> buscarItensPorTenancia(Long tenancy);
 }

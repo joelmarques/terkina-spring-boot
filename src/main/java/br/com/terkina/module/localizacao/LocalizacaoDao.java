@@ -14,6 +14,6 @@ public interface LocalizacaoDao extends JpaRepository<Localizacao, Long> {
 	List<Localizacao> findByTenancy(Long tenancy);
 	
 	@Query(value = "SELECT id AS id, nome AS descricao FROM localizacao WHERE tenancy = ?1", nativeQuery = true)
-	List<Item> getItems(Long tenancy);
+	List<Item> buscarItensPorTenancia(Long tenancy);
 
 }

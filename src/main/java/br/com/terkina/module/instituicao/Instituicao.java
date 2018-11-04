@@ -7,10 +7,8 @@ import br.com.terkina.base.entity.AbstractEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@ToString(of="nome")
 @NoArgsConstructor
 public class Instituicao extends AbstractEntity<Long> {
 
@@ -23,4 +21,9 @@ public class Instituicao extends AbstractEntity<Long> {
 	@Getter @Setter
 	@Column(name="SIGLA", length = 20, nullable = false)
 	private String sigla;
+	
+	@Override
+	public String toString() {
+		return this.getNome();
+	}
 }

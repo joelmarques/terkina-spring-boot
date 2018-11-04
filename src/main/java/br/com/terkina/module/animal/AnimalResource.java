@@ -61,12 +61,12 @@ public class AnimalResource {
 	
 	@GetMapping("especies")
 	public Collection<Item> getEspecies() {		
-		return this.tipoDeAnimalDao.getItems(this.userService.getCurrentTenancy());
+		return this.tipoDeAnimalDao.buscarItensPorTenancia(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("localizacoes")
 	public Collection<Item> getLocalizacoes() {		
-		return this.localizacaoDao.getItems(this.userService.getCurrentTenancy());
+		return this.localizacaoDao.buscarItensPorTenancia(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("sexos")

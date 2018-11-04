@@ -64,7 +64,7 @@ public class ProjetoPesquisaResource {
 	
 	@GetMapping("tiposDePesquisa")
 	public Collection<Item> getTiposDePesquisa() {
-		return this.tipoDePesquisaDao.findAllByTenancy(this.userService.getCurrentTenancy());
+		return this.tipoDePesquisaDao.buscarItensPorTenancia(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("orientadores")

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.terkina.module.animal.Animal;
-import br.com.terkina.module.animal.AnimalRepository;
+import br.com.terkina.module.animal.AnimalDao;
 import br.com.terkina.module.animal.IAnimal;
 import br.com.terkina.module.empresa.EmpresaDao;
 import br.com.terkina.module.experimento.projeto.ProjetoPesquisa;
@@ -27,7 +27,7 @@ public class DefaultSiteService implements SiteService {
 	private IntegranteDao integranteDao;
 	
 	@Autowired
-	private AnimalRepository animalRepository;
+	private AnimalDao animalDao;
 	
 	@Autowired
 	private ProjetoPesquisaDao projetoPesquisaDao;
@@ -61,12 +61,12 @@ public class DefaultSiteService implements SiteService {
 	}
 
 	private Collection<IAnimal> buscarAnimaisHabilitadosDaEmpresa(Long tenancy) {
-		return this.animalRepository.buscarAnimaisHabilitadosDaEmpresa(tenancy);
+		return this.animalDao.buscarAnimaisHabilitadosDaEmpresa(tenancy);
 	}
 	
 	@Override
 	public IHistoricoEscolar buscarHistoricoEscolar(Long idAnimal) {
-		final Animal animal = this.animalRepository.getOne(idAnimal);
+		final Animal animal = this.animalDao.getOne(idAnimal);
 		final Collection<ProjetoPesquisa> projetos = this.projetoPesquisaDao.buscarProjetosDoAnimal(animal);
 		return new HistoricoEscolar(animal, projetos);
 	}

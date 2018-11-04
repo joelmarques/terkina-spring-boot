@@ -19,10 +19,10 @@ import br.com.terkina.module.user.UserService;
 
 @RestController
 @RequestMapping("/resources/animais")
-public class AnimalController {
+public class AnimalResource {
 
 	@Autowired
-	private AnimalRepository animalRepository;
+	private AnimalDao animalDao;
 	
 	@Autowired
 	private TipoDeAnimalDao tipoDeAnimalDao;
@@ -41,22 +41,22 @@ public class AnimalController {
 	
 	@GetMapping("all")
 	public Collection<IAnimal> findAll() {		
-		return this.animalRepository.buscarAnimaisPorTenancia(this.userService.getCurrentTenancy());
+		return this.animalDao.buscarAnimaisPorTenancia(this.userService.getCurrentTenancy());
 	}
 	
 	@GetMapping("/{id}")
 	public AnimalDTO findByID(@PathVariable("id") Long id) {		
-		return this.converter.convert(this.animalRepository.getOne(id));
+		return this.converter.convert(this.animalDao.getOne(id));
 	}
 	
 	@PostMapping
 	public void save(@RequestBody AnimalDTO source) {
-		this.animalRepository.save(this.reverse.revert(source));
+		this.animalDao.save(this.reverse.revert(source));
 	}
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") Long id) {
-		this.animalRepository.deleteById(id);
+		this.animalDao.deleteById(id);
 	}
 	
 	@GetMapping("especies")

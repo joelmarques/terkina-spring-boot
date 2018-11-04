@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.com.terkina.base.entity.Item;
 
 @Repository
-public interface AnimalRepository extends JpaRepository<Animal, Long> {
+public interface AnimalDao extends JpaRepository<Animal, Long> {
 	
 	List<Animal> findByTenancy(Long tenancy);
 	

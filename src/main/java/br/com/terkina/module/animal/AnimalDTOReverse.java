@@ -22,7 +22,7 @@ import br.com.terkina.module.user.UserService;
 public class AnimalDTOReverse implements Reverse<AnimalDTO, Animal> {
 	
 	@Autowired
-	private AnimalRepository animalRepository;
+	private AnimalDao animalDao;
 	
 	@Autowired
 	private TipoDeAnimalDao tipoDeAnimalDao;
@@ -72,7 +72,7 @@ public class AnimalDTOReverse implements Reverse<AnimalDTO, Animal> {
 	}
 
 	private Animal getAnimal(final Long id) {		
-		return id == null ? new Animal() : this.animalRepository.getOne(id);
+		return id == null ? new Animal() : this.animalDao.getOne(id);
 	}
 	
 	private TipoDeAnimal reverterEspecie(final Item source) {

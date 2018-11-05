@@ -43,7 +43,7 @@ public class DefaultSiteService implements SiteService {
 		Collection<IPessoa> pesquisadores = this.buscarPesquisadoresHabilitadosDaEmpresa(empresa.getTenancy());
 		Collection<IAnimal> animais = this.buscarAnimaisHabilitadosDaEmpresa(empresa.getTenancy());
 		
-		pesquisadores.removeAll(orientadores);
+		pesquisadores.removeIf(p -> orientadores.stream().anyMatch(o -> o.getEmail().equals(p.getEmail())));
 		
 		return new Site(empresa, orientadores, pesquisadores, animais);
 	}

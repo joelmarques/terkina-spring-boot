@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Feliz Aniversário!</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <!-- use the font -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 48px;
+        }
+    </style>
+</head>
+<body style="margin: 0; padding: 0;">
+
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="600" style="border-collapse: collapse;">
+        <tr>
+            <td align="center" bgcolor="#777777" style="padding: 40px 0 30px 0;">
+                <img th:src="${foto}" style="display: block;" />
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#eaeaea" style="padding: 40px 30px 40px 30px;">
+                <p>Me deseje Parabéns porque hoje é Meu Aniversário... uhu!!!</p>
+                <p>Eu <b th:text="${nome}"></b> completo hoje <b th:text="${idade}"></b></p>
+                <p>Aguardo uma visita sua hein!</p>
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor="#777777" style="padding: 30px 30px 30px 30px;">
+                <p th:text="${remetente}"></p>
+                <br />
+                <p>http://www.terkina.com.br</p>
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>

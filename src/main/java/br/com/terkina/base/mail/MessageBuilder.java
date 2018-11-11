@@ -21,7 +21,7 @@ public class MessageBuilder {
 		
 		MessageVO message = new MessageVO();
 		message.setSubject(subject);
-		message.setTo(mail);
+		message.setTo(new String[] {mail});
 		message.setBody(body.toString());
 		
 		return message;
@@ -39,7 +39,7 @@ public class MessageBuilder {
 		
 		MessageVO message = new MessageVO();
 		message.setSubject(subject);
-		message.setTo(visitante.getEmailDoSite());
+		message.setTo(new String[] {visitante.getEmailDoSite()});
 		message.setBody(body.toString());
 		
 		return message;
@@ -50,7 +50,7 @@ public class MessageBuilder {
 	public class MessageVO implements Message {
 		
 		private String subject;
-		private String to;
+		private String[] to;
 		private String body;
 	}
 

@@ -36,7 +36,7 @@ public class AvisoDeAniversarioJob {
 	@Autowired
 	private SmtpMailSender smtpMailSender;
 
-	@Scheduled(cron = "0 0 6 * * *")
+	@Scheduled(cron = "${spring.cron.expression}")
 	public void execute() {
 		
 		List<Empresa> empresas = this.empresaDao.findAll();

@@ -24,6 +24,8 @@ import lombok.Setter;
 @EnableScheduling
 public class AvisoDeAniversarioJob {
 	
+	private static final String TIME_ZONE = "America/Sao_Paulo";
+	
 	@Autowired
 	private EmpresaDao empresaDao;
 	
@@ -36,7 +38,7 @@ public class AvisoDeAniversarioJob {
 	@Autowired
 	private SmtpMailSender smtpMailSender;
 
-	@Scheduled(cron = "${spring.cron.expression}")
+	@Scheduled(cron = "${spring.cron.expression}", zone = TIME_ZONE)
 	public void execute() {
 		
 		List<Empresa> empresas = this.empresaDao.findAll();

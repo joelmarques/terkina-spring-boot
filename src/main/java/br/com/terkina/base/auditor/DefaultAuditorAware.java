@@ -1,4 +1,4 @@
-package br.com.terkina.base.context;
+package br.com.terkina.base.auditor;
 
 import java.util.Optional;
 
